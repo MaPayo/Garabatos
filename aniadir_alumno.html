@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Responder Mensaje — Garabatos (grupo 4)</title>
+
+	<!-- Bootstrap 4.3.1 CSS -->
+	<link rel="stylesheet" href="css/bootstrap-4.3.1.css">
+	<link rel="stylesheet" href="css/open-iconic-bootstrap.css">
+
+</head>
+
+<body>
+	<!-- Header and navigation bar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Garabatos (grupo 4)</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Todos <span
+							class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="#">ESO 1º B</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">ESO 2º B</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">ESO 2º C</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Enviados</a>
+						<a class="dropdown-item" href="#">Recibidos</a>
+						<a class="dropdown-item" href="#">Archivados</a>
+						<a class="dropdown-item" href="#">Leidos</a>
+						<a class="dropdown-item" href="#">Favoritos</a>
+					</div>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+	<!-- / Header and navigation bar -->
+
+	<!-- Main container -->
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Left side bar -->
+			<div class="col-sm-4">
+				<ul class="list-group">
+					<li class="list-group-item active">Alumno 1
+						<span class="badge badge-primary badge-pill align-items-end">12</span>
+					</li>
+					<li class="list-group-item">Alumno 2
+					</li>
+					<li class="list-group-item">Alumno 5
+						<span class="badge badge-primary badge-pill">22</span>
+					</li>
+					<li class="list-group-item">Alumno 22
+						<span class="badge badge-primary badge-pill">3</span>
+					</li>
+					<li class="list-group-item">Alumno 35
+						<span class="badge badge-primary badge-pill">7</span>
+					</li>
+				</ul>
+				<div align="center">
+					<button type="button" class="btn btn-primary">+</button>
+				</div>
+			</div>
+			<!-- / Left side bar -->
+
+			<!-- Main panel -->
+			<div class="col-sm-8 anuncio">
+				<form method="post">
+					<div class="p-3 mb-2 bg-secondary text-white">Nuevo alumno</div>
+					<div class="row">
+						<div class="col-sm-3">
+							<p class="p-1">DNI</p>
+							<p class="p-1">Nombre</p>
+							<p class="p-1">Apellidos</p>
+							<p class="p-1">Curso</p>
+						</div>
+						<div class="col-sm-9">
+							<input class="form-control row mb-2">
+							<input class="form-control row mb-2">
+							<input class="form-control row mb-2">
+							<div class="dropdown row">
+								<div class="col-sm-2">
+								  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    Curso
+								  </button>
+								  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a class="dropdown-item" href="#">1ºB</a>
+								    <a class="dropdown-item" href="#">2ºA</a>
+								    <a class="dropdown-item" href="#">2ºB</a>
+								  </div>
+								</div>
+								<div class="col-sm-2">
+							  		<button type="button" class="btn btn-secondary">+</button>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<p class="p-1">Responsables</p>
+							<div class ="row">
+								<div class="col-sm-3">
+									<p class="p-1">Pepita</p>
+								</div>
+								<div class="col-sm-2">
+									<button type="button" class="btn btn-secondary">-</button>
+								</div>
+							</div>
+							<div class="dropdown row">
+								<div class="col-sm-3">
+								  <button class="btn btn-secondary dropdown-toggle p-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    Responsables
+								  </button>
+								  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a class="dropdown-item" href="#">Pepe</a>
+								    <a class="dropdown-item" href="#">Manolo</a>
+								    <a class="dropdown-item" href="#">Pepa</a>
+								    <a class="dropdown-item" href="#">Manuela</a>
+								  </div>
+								</div>
+								<div class="col-sm-2">
+							  		<button type="button" class="btn btn-secondary">+</button>
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- / Main panel -->
+
+		</div>
+	</div>
+	<!-- / Main container -->
+
+	<!-- Categories selection modal (triggered by a button) -->
+
+	<!-- / Categories selection modal (triggered by a button) -->
+
+	<!-- jQuery 3.3.1 -->
+	<script src="js/jquery-3.3.1.js"></script>
+	<!-- Bootstrap 4.3.1 Javascript -->
+	<script src="js/bootstrap.bundle-4.3.1.js"></script>
+	<!-- Tinymce editor Javascript -->
+	<script src="js/tinymce.min.js"></script>
+	<!-- App specific Javascript -->
+	<script type="text/javascript">
+		tinymce.init({
+			selector: '#inputTextoAnuncio',
+			plugins: ['link image lists table'],
+			toolbar: 'undo redo | bold italic backcolor | alignleft aligncenter alignjustify | bullist numlist outdent indent | image link table | removeformat',
+			menubar: false,
+		});
+		$("#lista-categorias li").click((e) => {
+			$(e.currentTarget).toggleClass("active");
+		});
+		$("#button-save-cats").click((e) => {
+			$("#inputCategorias").val($("#lista-categorias li.active").toArray().map(o => o.id).join(" "));
+		});
+		$("#boton-publicar").click((e) => {
+			let o = {
+				titulo: $("#inputTitulo").val(),
+				cats: $("#inputCategorias").val(),
+				text: tinymce.activeEditor.getContent()
+			};
+			console.log("Publicando anuncio, beep bop!", o);
+			e.preventDefault();
+		});
+	</script>
+</body>
+
+</html>
