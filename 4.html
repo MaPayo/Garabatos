@@ -22,10 +22,10 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Todos <span
-							class="sr-only">(current)</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Todos </a></li>
                 <li class="nav-item"><a class="nav-link" href="#">1º B</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">2º B</a></li>
+                <li class="nav-item active"><a class="nav-link" href="#">2º B <span
+                    class="sr-only">(current)</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="#">5º C</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
@@ -40,7 +40,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -52,21 +52,24 @@
             <!-- Left side bar -->
             <div class="col-sm-4">
                 <ul class="list-group">
-                    <li class="list-group-item active">Alumno 1
-                        <span class="badge badge-primary badge-pill align-items-end">12</span>
+                    <li class="list-group-item">Alumno 1
+                        <span class="badge badge-dark badge-pill align-items-end">12</span>
                     </li>
                     <li class="list-group-item">Alumno 2
                     </li>
-                    <li class="list-group-item">Alumno 5
-                        <span class="badge badge-primary badge-pill">22</span>
+                    <li class="list-group-item active">Alumno 5
+                        <span class="badge badge-dark badge-pill">22</span>
                     </li>
                     <li class="list-group-item">Alumno 22
-                        <span class="badge badge-primary badge-pill">3</span>
+                        <span class="badge badge-dark badge-pill">3</span>
                     </li>
                     <li class="list-group-item">Alumno 35
-                        <span class="badge badge-primary badge-pill">7</span>
+                        <span class="badge badge-dark badge-pill">7</span>
                     </li>
                 </ul>
+                <div align="center">
+                    <button type="button" class="btn btn-secondary">Mandar mensaje a toda la clase</button>
+                </div>
             </div>
             <!-- / Left side bar -->
 
@@ -89,7 +92,7 @@
                     </div>
 
                     <div class="form-row justify-content-end">
-                        <button type="submit" id="boton-publicar" class="btn btn-primary">Responder</button>
+                        <button type="submit" id="boton-publicar" class="btn btn-secondary">Responder</button>
                     </div>
                 </form>
             </div>
