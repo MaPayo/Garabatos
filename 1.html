@@ -17,15 +17,15 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Garabatos (grupo 4)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse col-sm-5" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Todos </a></li>
                 <li class="nav-item"><a class="nav-link" href="#">1º B</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">2º B <span
-			class="sr-only">(current)</span></a></li>
+                <li class="nav-item active"><a class="nav-link" href="#">2º B <span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="#">5º C</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
@@ -38,10 +38,16 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+        </div>
+        <div class="col-sm-1"><span><strong>Alumnos</strong></span></div>
+        <div class="custom-control custom-switch col-sm-2">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1">Mensajes</label>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
         </div>
     </nav>
     <!-- / Header and navigation bar -->
@@ -91,8 +97,8 @@
                             <div class="dropdown row">
                                 <div class="col-sm-2">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    Curso
-								  </button>
+                                        Curso
+                                    </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">1ºB</a>
                                         <a class="dropdown-item" href="#">2ºA</a>
@@ -121,8 +127,8 @@
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-3">
                                     <button class="btn btn-secondary dropdown-toggle p-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    Responsables
-								  </button>
+                                        Responsables
+                                    </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Pepe</a>
                                         <a class="dropdown-item" href="#">Manolo</a>

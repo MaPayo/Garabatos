@@ -38,6 +38,11 @@
                     </div>
                 </li>
             </ul>
+            <div class="col-sm-1"><span>Alumnos</span></div>
+            <div class="custom-control custom-switch col-sm-2">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" selected="true">
+                <label class="custom-control-label" for="customSwitch1"><strong>Mensajes</strong></label>
+            </div>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
@@ -135,6 +140,7 @@
             console.log("Publicando anuncio, beep bop!", o);
             e.preventDefault();
         });
+        $('.custom-control-input').prop('indeterminate', true);
     </script>
 </body>
 
