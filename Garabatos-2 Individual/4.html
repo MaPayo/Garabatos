@@ -8,7 +8,6 @@
 
     <!-- Bootstrap 4.3.1 CSS -->
     <link rel="stylesheet" href="css/bootstrap-4.3.1.css">
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.css">
 
 </head>
 
@@ -17,26 +16,26 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Garabatos (grupo 4)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" id="listClasses">
             </ul>
 
-                <div class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
-                   	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        	<a class="dropdown-item" href="#">Enviados</a>
-                     		<a class="dropdown-item" href="#">Recibidos</a>
-                        	<a class="dropdown-item" href="#">Archivados</a>
-                        	<a class="dropdown-item" href="#">Leidos</a>
-                        	<a class="dropdown-item" href="#">Favoritos</a>
-                    	</div>
-		</div>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Enviados</a>
+                    <a class="dropdown-item" href="#">Recibidos</a>
+                    <a class="dropdown-item" href="#">Archivados</a>
+                    <a class="dropdown-item" href="#">Leidos</a>
+                    <a class="dropdown-item" href="#">Favoritos</a>
+                </div>
+            </div>
 
             <div class="col-sm-1"><span>Alumnos</span>
-	    </div>
+            </div>
             <div class="custom-control custom-switch col-sm-2">
                 <input type="checkbox" class="custom-control-input" id="customSwitch1" selected="true">
                 <label class="custom-control-label" for="customSwitch1"><strong>Mensajes</strong></label>
@@ -102,30 +101,30 @@
     <!-- Tinymce editor Javascript -->
     <script src="js/tinymce.min.js"></script>
     <!-- App specific Javascript -->
-  	<script src="js/gb.js" type="module"></script>
+    <script src="js/gb.js" type="module"></script>
     <script type="text/javascript">
-        tinymce.init({
-            selector: '#inputTextoAnuncio',
-            plugins: ['link image lists table'],
-            toolbar: 'undo redo | bold italic backcolor | alignleft aligncenter alignjustify | bullist numlist outdent indent | image link table | removeformat',
-            menubar: false,
-        });
-        $("#lista-categorias li").click((e) => {
-            $(e.currentTarget).toggleClass("active");
-        });
-        $("#button-save-cats").click((e) => {
-            $("#inputCategorias").val($("#lista-categorias li.active").toArray().map(o => o.id).join(" "));
-        });
-        $("#boton-publicar").click((e) => {
-            let o = {
-                titulo: $("#inputTitulo").val(),
-                cats: $("#inputCategorias").val(),
-                text: tinymce.activeEditor.getContent()
-            };
-            console.log("Publicando anuncio, beep bop!", o);
-            e.preventDefault();
-        });
-        $('.custom-control-input').prop('indeterminate', true);
+        $(document).ready(demo());
+
+
+
+
+
+        /* $("#lista-categorias li").click((e) => {
+             $(e.currentTarget).toggleClass("active");
+         });
+         $("#button-save-cats").click((e) => {
+             $("#inputCategorias").val($("#lista-categorias li.active").toArray().map(o => o.id).join(" "));
+         });
+         $("#boton-publicar").click((e) => {
+             let o = {
+                 titulo: $("#inputTitulo").val(),
+                 cats: $("#inputCategorias").val(),
+                 text: tinymce.activeEditor.getContent()
+             };
+             console.log("Publicando anuncio, beep bop!", o);
+             e.preventDefault();
+         });
+         $('.custom-control-input').prop('indeterminate', true);*/
     </script>
 </body>
 
