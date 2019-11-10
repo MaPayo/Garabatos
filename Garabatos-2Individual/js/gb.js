@@ -1,20 +1,22 @@
 import * as Gb from './gbapi.js'
+
 function createGroupItemClasses(clase) {
-  const html = [
-	  '<li class="nav-class"><a class="nav-item" onclick=updateAlmGrp("',clase.cid,'")>', 
-	  clase.cid,
-	  '</a></li>'
-  ];
-  return $(html.join(''));
+    const html = [
+        '<li class="nav-class"><a class="nav-item" onclick=updateAlmGrp("', clase.cid, '")>',
+        clase.cid,
+        '</a></li>'
+    ];
+    return $(html.join(''));
 }
 
 function createGroupItemUsers(alumno) {
-  const html = [
-    '<li class="list-group-item">', alumno.first_name,
-	'<span class="badge badge-dark badge-pill align-items-end">',alumno.last_name,'</span>',
-    '</li>'
-  ];
-  return $(html.join(''));
+    let m = Math.floor(Math.random() * 20);
+    const html = [
+        '<li class="list-group-item">', alumno.first_name,
+        '<span class="badge badge-dark badge-pill align-items-end">', m, '</span>',
+        '</li>'
+    ];
+    return $(html.join(''));
 }
 
 function createVmItem(params) {
@@ -46,20 +48,20 @@ function createVmItem(params) {
 //
 $(function() {
 
-	window.updateAlmGrp = function updateAlmGrp(input){
-		try {
-			$("#listUsers").empty();
-			Gb.globalState.classes.forEach(function(item) {
-				if (item.cid == input) {
-      					item.teachers.forEach(m =>  $("#listUsers").append(createGroupItemUsers(m)))
-				}
-			});
-    		} catch (e) {
-    			console.log('Error actualizando', e);
-		}
+    window.updateAlmGrp = function updateAlmGrp(input) {
+            try {
+                $("#listUsers").empty();
+                Gb.globalState.classes.forEach(function(item) {
+                    if (item.cid == input) {
+                        item.teachers.forEach(m => $("#listUsers").append(createGroupItemUsers(m)))
+                    }
+                });
+            } catch (e) {
+                console.log('Error actualizando', e);
+            }
 
-	}
-    // funcion de actualización de ejemplo. Llámala para refrescar interfaz
+        }
+        // funcion de actualización de ejemplo. Llámala para refrescar interfaz
     window.demo = function update(result) {
         try {
             // vaciamos un contenedor
