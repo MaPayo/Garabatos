@@ -1,7 +1,9 @@
 import * as Gb from './gbapi.js'
 function createGroupItemClasses(clase) {
   const html = [
-    '<li class="nav-item"><a class="nav-link" href="#">', clase.cid,'</a></li>'
+	  '<li class="nav-class"><a class="nav-item" onclick=updateAlmGrp("',clase.cid,'")>', 
+	  clase.cid,
+	  '</a></li>'
   ];
   return $(html.join(''));
 }
@@ -36,6 +38,8 @@ function createVmItem(params) {
   return $(html.join(''));
 }
 
+
+
 //
 //
 // Código de pegamento, ejecutado sólo una vez que la interfaz esté cargada.
@@ -44,6 +48,31 @@ function createVmItem(params) {
 //
 $(function() { 
   
+
+	
+	window.updateAlmGrp = function updateAlmGrp(input){
+		try {
+			$("#listUsers").empty();
+			Gb.globalState.classes.forEach(function(item) {
+				if (item.cid == input) {
+      					item.teachers.forEach(m =>  $("#listUsers").append(createGroupItemUsers(m)))
+				}
+			});
+
+			
+    		} catch (e) {
+    			console.log('Error actualizando', e);
+		}
+
+	}
+
+
+
+
+
+
+
+
   // funcion de actualización de ejemplo. Llámala para refrescar interfaz
   window.demo = function update(result) {
     try {

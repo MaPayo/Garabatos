@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="demo()">
     <!-- Header and navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Garabatos (grupo 4)</a>
@@ -20,11 +20,10 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
+                 <ul class="navbar-nav mr-auto" id="listClasses">
+            	</ul>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" id="listClasses">
-            </ul>
-
-                <div class="nav-item dropdown">
+                 <div class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
                    	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         	<a class="dropdown-item" href="#">Enviados</a>
@@ -54,8 +53,9 @@
         <div class="row">
             <!-- Left side bar -->
             <div class="col-sm-4">
-                <ul class="list-group" id="listUsers">
-                </ul>
+		    <ul class="list-group" id="listUsers">
+               
+		</ul>
                 <div align="center">
                     <button type="button" class="btn btn-secondary">Mandar mensaje a toda la clase</button>
                 </div>
