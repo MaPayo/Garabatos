@@ -21,24 +21,22 @@
 		</button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Todos </a></li>
-                <li class="nav-item"><a class="nav-link" href="#">1º B</a></li>
-                <li class="nav-item active"><a class="nav-link" href="#">2º B <span
-                    class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#">5º C</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Enviados</a>
-                        <a class="dropdown-item" href="#">Recibidos</a>
-                        <a class="dropdown-item" href="#">Archivados</a>
-                        <a class="dropdown-item" href="#">Leidos</a>
-                        <a class="dropdown-item" href="#">Favoritos</a>
-                    </div>
-                </li>
+            <ul class="navbar-nav mr-auto" id="listClasses">
             </ul>
-            <div class="col-sm-1"><span>Alumnos</span></div>
+
+                <div class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar mensajes</a>
+                   	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        	<a class="dropdown-item" href="#">Enviados</a>
+                     		<a class="dropdown-item" href="#">Recibidos</a>
+                        	<a class="dropdown-item" href="#">Archivados</a>
+                        	<a class="dropdown-item" href="#">Leidos</a>
+                        	<a class="dropdown-item" href="#">Favoritos</a>
+                    	</div>
+		</div>
+
+            <div class="col-sm-1"><span>Alumnos</span>
+	    </div>
             <div class="custom-control custom-switch col-sm-2">
                 <input type="checkbox" class="custom-control-input" id="customSwitch1" selected="true">
                 <label class="custom-control-label" for="customSwitch1"><strong>Mensajes</strong></label>
@@ -56,21 +54,7 @@
         <div class="row">
             <!-- Left side bar -->
             <div class="col-sm-4">
-                <ul class="list-group">
-                    <li class="list-group-item">Alumno 1
-                        <span class="badge badge-dark badge-pill align-items-end">12</span>
-                    </li>
-                    <li class="list-group-item">Alumno 2
-                    </li>
-                    <li class="list-group-item active">Alumno 5
-                        <span class="badge badge-dark badge-pill">22</span>
-                    </li>
-                    <li class="list-group-item">Alumno 22
-                        <span class="badge badge-dark badge-pill">3</span>
-                    </li>
-                    <li class="list-group-item">Alumno 35
-                        <span class="badge badge-dark badge-pill">7</span>
-                    </li>
+                <ul class="list-group" id="listUsers">
                 </ul>
                 <div align="center">
                     <button type="button" class="btn btn-secondary">Mandar mensaje a toda la clase</button>
@@ -118,6 +102,7 @@
     <!-- Tinymce editor Javascript -->
     <script src="js/tinymce.min.js"></script>
     <!-- App specific Javascript -->
+  	<script src="js/gb.js" type="module"></script>
     <script type="text/javascript">
         tinymce.init({
             selector: '#inputTextoAnuncio',
