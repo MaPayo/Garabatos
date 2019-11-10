@@ -1,17 +1,15 @@
 import * as Gb from './gbapi.js'
-
-function createGroupItem(group) {
+function createGroupItemClasses(clase) {
   const html = [
-    '<li id="grp_',
-    group.name,
-    '" ',
-    'class="list-group-item d-flex justify-content-between align-items-center">',
-    group.name,
-    '<span class="badge badge-primary badge-pill" title="',
-    group.elements.join(' '),
-    '">',
-    group.elements.length,
-    '</span>',
+    '<li class="nav-item"><a class="nav-link" href="#">', clase.cid,'</a></li>'
+  ];
+  return $(html.join(''));
+}
+
+function createGroupItemUsers(alumno) {
+  const html = [
+    '<li class="list-group-item">', alumno.first_name,
+	'<span class="badge badge-dark badge-pill align-items-end">',alumno.last_name,'</span>',
     '</li>'
   ];
   return $(html.join(''));
@@ -47,13 +45,17 @@ function createVmItem(params) {
 $(function() { 
   
   // funcion de actualización de ejemplo. Llámala para refrescar interfaz
-  function update(result) {
+  window.demo = function update(result) {
     try {
       // vaciamos un contenedor
-      $("#grupos").empty();
+      $("#listUsers").empty();
       // y lo volvemos a rellenar con su nuevo contenido
-      Gb.globalState.classes.forEach(group =>  $("#grupos").append(createGroupItem(group)));      
-      // y asi para cada cosa que pueda haber cambiado
+     // Gb.globalState.classes.forEach(group =>  $("#grupos").append(createGroupItem(group)));      
+      Gb.globalState.classes.forEach(m => $("#listClasses").append(createGroupItemClasses(m)))
+      Gb.globalState.students.forEach(m => $("#listUsers").append(createGroupItemUsers(m)))
+
+	    
+	// y asi para cada cosa que pueda haber cambiado
     } catch (e) {
       console.log('Error actualizando', e);
     }
