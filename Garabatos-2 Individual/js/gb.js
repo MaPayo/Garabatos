@@ -1,35 +1,20 @@
 import * as Gb from './gbapi.js'
+function createGroupItemClasses(clase) {
+  const html = [
+	  '<li class="nav-class"><a class="nav-item" onclick=updateAlmGrp("',clase.cid,'")>', 
+	  clase.cid,
+	  '</a></li>'
+  ];
+  return $(html.join(''));
+}
 
-function createGroupItem(mensaje) {
-    const rid = 'x_' + Math.floor(Math.random() * 1000000);
-    const hid = 'h_' + rid;
-    const cid = 'c_' + rid;
-
-    const html = [
-        '<div class="card">',
-        '<div class="card-header" id="', hid, '">',
-        '  <h2 class="mb-0">',
-        '    <button class="btn btn-link" type="button"',
-        ' data-toggle="collapse" data-target="#', cid, '"',
-        '      aria-expanded="true" aria-controls="', rid, '">',
-        '<b class="msg mtitle">', mensaje.title, '</b>',
-        '<div class="msg mdate"> Enviado el ',
-        new Intl.DateTimeFormat('es-ES').format(mensaje.date),
-        ' por ', mensaje.from,
-        '</div>',
-        '    </button>',
-        '  </h2>',
-        '</div>',
-        '',
-        '<div id="', cid, '" class="collapse show" aria-labelledby="', hid, '" ',
-        'data-parent="#accordionExample">',
-        '  <div class="card-body msg">',
-        mensaje.body,
-        '  </div>',
-        '</div>',
-        '</div>'
-    ];
-    return $(html.join(''));
+function createGroupItemUsers(alumno) {
+  const html = [
+    '<li class="list-group-item">', alumno.first_name,
+	'<span class="badge badge-dark badge-pill align-items-end">',alumno.last_name,'</span>',
+    '</li>'
+  ];
+  return $(html.join(''));
 }
 
 function createVmItem(params) {
@@ -61,14 +46,30 @@ function createVmItem(params) {
 //
 $(function() {
 
+	window.updateAlmGrp = function updateAlmGrp(input){
+		try {
+			$("#listUsers").empty();
+			Gb.globalState.classes.forEach(function(item) {
+				if (item.cid == input) {
+      					item.teachers.forEach(m =>  $("#listUsers").append(createGroupItemUsers(m)))
+				}
+			});
+    		} catch (e) {
+    			console.log('Error actualizando', e);
+		}
+
+	}
     // funcion de actualización de ejemplo. Llámala para refrescar interfaz
     window.demo = function update(result) {
         try {
-            console.log("Hola");
             // vaciamos un contenedor
-            $("#accordionExample").empty();
+            $("#listUsers").empty();
             // y lo volvemos a rellenar con su nuevo contenido
-            Gb.globalState.messages.forEach(m => $("#accordionExample").append(createGroupItem(m)));
+            // Gb.globalState.classes.forEach(group =>  $("#grupos").append(createGroupItem(group)));      
+            Gb.globalState.classes.forEach(m => $("#listClasses").append(createGroupItemClasses(m)))
+            Gb.globalState.students.forEach(m => $("#listUsers").append(createGroupItemUsers(m)))
+
+
             // y asi para cada cosa que pueda haber cambiado
         } catch (e) {
             console.log('Error actualizando', e);
@@ -101,7 +102,7 @@ $(function() {
             });
         });
 
-        Gb.addClass(new Gb.EClass(cid, students.map(s => s.sid), [teacher.uid]));
+        Gb.addClass(new Gb.EClass(cid, [teacher], students));
     });
     Gb.addUser(U.randomUser(Gb.UserRoles.ADMIN));
     console.log(userIds);
