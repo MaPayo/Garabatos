@@ -1,9 +1,15 @@
 import * as Gb from './gbapi.js'
 
+function crearAlumno(nombre) {
+    let s = addStudent(nombre);
+    window.alert(nombre);
+}
+
 function createGroupItemClasses(clase) {
+
     const html = [
         '<li class="nav-class"><a class="nav-item" onclick=updateAlmGrp("', clase.cid, '")>',
-        clase.cid,
+        clase.cid, "&nbsp;",
         '</a></li>'
     ];
     return $(html.join(''));
@@ -11,13 +17,60 @@ function createGroupItemClasses(clase) {
 
 function createGroupItemUsers(alumno) {
     let m = Math.floor(Math.random() * 20);
+    let id = 'a_' + Math.floor(Math.random() * 10000)
     const html = [
-        '<li class="list-group-item">', alumno.first_name,
+        '<li id="', alumno.cid, '" class="list-group-item">', alumno.first_name,
         '<span class="badge badge-dark badge-pill align-items-end">', m, '</span>',
         '</li>'
+
     ];
     return $(html.join(''));
 }
+
+function createGroupEmail(mensaje) {
+    const rid = 'x_' + Math.floor(Math.random() * 1000000);
+    const hid = 'h_' + rid;
+    const cid = 'c_' + rid;
+
+    const html = [
+        '<div class="card">',
+        '<div class="card-header" id="', hid, '">',
+        '  <h2 class="mb-0">',
+        '    <button class="btn btn-link" type="button"',
+        ' data-toggle="collapse" data-target="#', cid, '"',
+        '      aria-expanded="true" aria-controls="', rid, '">',
+        '<b class="msg mtitle">', mensaje.title, '</b>',
+        '<div class="msg mdate"> Enviado el ',
+        new Intl.DateTimeFormat('es-ES').format(mensaje.date),
+        ' por ', mensaje.from,
+        '</div>',
+        '    </button>',
+        '  </h2>',
+        '</div>',
+        '',
+        '<div id="', cid, '" class="collapse show" aria-labelledby="', hid, '" ',
+        'data-parent="#accordionExample">',
+        '  <div class="card-body msg">',
+        mensaje.body,
+        '  </div>',
+        '</div>',
+        '</div>'
+    ];
+    return $(html.join(''));
+}
+
+
+/*function showInfoUser(alumno) {
+    const html = ['<div class="tab-pane fade show active" id="info_', alumno.cid, '" role="tabpanel" aria-labelledby="info_', alumno.cid, '")>',
+        '<div class="p-3 mb-2 bg-secondary text-white">', alumno.first_name, '&nbsp;', alumno.last_name, '<button type="button" class="btn btn-secondary" id="guardar_a">Guardar</button></div>',
+
+        '</div>',
+        '</div>'
+
+    ];
+    return $(html.join(''));
+
+}*/
 
 function createVmItem(params) {
     const stateToBadge = {
@@ -50,7 +103,7 @@ $(function() {
 
     window.updateAlmGrp = function updateAlmGrp(input) {
             try {
-                $("#listUsers").empty();
+                $("#listUsers").empty()
                 Gb.globalState.classes.forEach(function(item) {
                     if (item.cid == input) {
                         item.teachers.forEach(m => $("#listUsers").append(createGroupItemUsers(m)))
@@ -65,14 +118,15 @@ $(function() {
     window.demo = function update(result) {
         try {
             // vaciamos un contenedor
-            $("#listUsers").empty();
-            // y lo volvemos a rellenar con su nuevo contenido
-            // Gb.globalState.classes.forEach(group =>  $("#grupos").append(createGroupItem(group)));      
+            $("#listUsers").empty()
+                // y lo volvemos a rellenar con su nuevo contenido
+                // Gb.globalState.classes.forEach(group =>  $("#grupos").append(createGroupItem(group)));      
             Gb.globalState.classes.forEach(m => $("#listClasses").append(createGroupItemClasses(m)))
             Gb.globalState.students.forEach(m => $("#listUsers").append(createGroupItemUsers(m)))
-
-
-            // y asi para cada cosa que pueda haber cambiado
+            $('#emails').empty()
+            Gb.globalState.messages.forEach(m => $("#emails").append(createGroupEmail(m)))
+            return false
+                // y asi para cada cosa que pueda haber cambiado
         } catch (e) {
             console.log('Error actualizando', e);
         }

@@ -62,7 +62,7 @@
             <!-- / Left side bar -->
 
             <!-- Main panel -->
-            <div class="col-sm-8 anuncio">
+            <div class="col-sm-8 anuncio" id="emails">
                 <form method="post">
                     <div class="p-3 mb-2 bg-secondary text-white">Correo recibido el 22-03-2020 a las 18:45</div>
                     <p>Lorem fistrum sed veniam reprehenderit. Se calle ustée nisi me cago en tus muelas tempor pupita. Hasta luego Lucas me cago en tus muelas jarl ese pedazo de te va a hasé pupitaa consectetur voluptate. Enim diodenoo está la cosa muy
@@ -109,22 +109,22 @@
 
 
 
-        /* $("#lista-categorias li").click((e) => {
-             $(e.currentTarget).toggleClass("active");
-         });
-         $("#button-save-cats").click((e) => {
-             $("#inputCategorias").val($("#lista-categorias li.active").toArray().map(o => o.id).join(" "));
-         });
-         $("#boton-publicar").click((e) => {
-             let o = {
-                 titulo: $("#inputTitulo").val(),
-                 cats: $("#inputCategorias").val(),
-                 text: tinymce.activeEditor.getContent()
-             };
-             console.log("Publicando anuncio, beep bop!", o);
-             e.preventDefault();
-         });
-         $('.custom-control-input').prop('indeterminate', true);*/
+        $("#lista-categorias li").click((e) => {
+            $(e.currentTarget).toggleClass("active");
+        });
+        $("#button-save-cats").click((e) => {
+            $("#inputCategorias").val($("#lista-categorias li.active").toArray().map(o => o.id).join(" "));
+        });
+        $("#boton-publicar").click((e) => {
+            let o = {
+                titulo: $("#inputTitulo").val(),
+                cats: $("#inputCategorias").val(),
+                text: tinymce.activeEditor.getContent()
+            };
+            console.log("Publicando anuncio, beep bop!", o);
+            e.preventDefault();
+        });
+        $('.custom-control-input').prop('indeterminate', true);
     </script>
 </body>
 

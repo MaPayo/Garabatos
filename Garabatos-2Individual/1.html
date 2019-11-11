@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="demo()">
     <!-- Header and navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Garabatos (grupo 4)</a>
@@ -45,84 +45,20 @@
         <div class="row">
             <!-- Left side bar -->
             <div class="col-sm-4">
-                <ul class="list-group">
-                    <li class="list-group-item">Alumno 1
-                        <span class="badge badge-dark badge-pill align-items-end">12</span>
-                    </li>
-                    <li class="list-group-item">Alumno 2
-                    </li>
-                    <li class="list-group-item">Alumno 5
-                        <span class="badge badge-dark badge-pill">22</span>
-                    </li>
-                    <li class="list-group-item">Alumno 22
-                        <span class="badge badge-dark badge-pill">3</span>
-                    </li>
-                    <li class="list-group-item">Alumno 35
-                        <span class="badge badge-dark badge-pill">7</span>
-                    </li>
+                <ul class="list-group" id="listUsers">
                 </ul>
                 <div align="center">
-                    <button type="button" class="btn btn-secondary">+</button>
+                    <button type="button" class="btn btn-secondary">Add Alumno</button>
                 </div>
             </div>
             <!-- / Left side bar -->
 
             <!-- Main panel -->
-            <div class="col-sm-8 anuncio">
-                <form method="post">
-                    <div class="p-3 mb-2 bg-secondary text-white">Nuevo alumno <button class="btn btn-light" content>Guardar</button></div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="p-1">DNI</p>
-                            <p class="p-1">Nombre</p>
-                            <p class="p-1">Apellidos</p>
-                            <p class="p-1">Curso</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <input class="form-control row mb-2" placeholder="12345678K">
-                            <input class="form-control row mb-2" placeholder="Pepito">
-                            <input class="form-control row mb-2" placeholder="Pérez Pérez">
-                            <div class="dropdown row">
-                                <div class="col-sm-2">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Curso
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">1ºB</a>
-                                        <a class="dropdown-item" href="#">2ºA</a>
-                                        <a class="dropdown-item" href="#">5ºC</a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <button type="button" class="btn btn-secondary">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p class="p-1">Responsables:</p>
-                            <div class="row">
-                                <div class="col-sm-1"></div>
-                                <div class="col-sm-3">
-                                    <p class="p-1">Pepita</p>
-                                </div>
-                                <div class="col-sm-2">
-                                    <button type="button" class="btn btn-secondary">-</button>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" class="btn btn-secondary" onclick="location.href='./2.html'">+</button>
-                            </div>
-                        </div>
-                    </div>
-
+            <div class="col-sm-8" id="anuncio">
             </div>
-            </form>
-        </div>
-        <!-- / Main panel -->
+            <!-- / Main panel -->
 
-    </div>
+        </div>
     </div>
     <!-- / Main container -->
 
@@ -137,26 +73,16 @@
     <!-- Tinymce editor Javascript -->
     <script src="js/tinymce.min.js"></script>
     <!-- App specific Javascript -->
+    <script src="js/gb.js" type="module"></script>
     <script type="text/javascript">
-        tinymce.init({
-            selector: '#inputTextoAnuncio',
-            plugins: ['link image lists table'],
-            toolbar: 'undo redo | bold italic backcolor | alignleft aligncenter alignjustify | bullist numlist outdent indent | image link table | removeformat',
-            menubar: false,
-        });
-        $("#lista-categorias li").click((e) => {
-            $(e.currentTarget).toggleClass("active");
-        });
-        $("#button-save-cats").click((e) => {
-            $("#inputCategorias").val($("#lista-categorias li.active").toArray().map(o => o.id).join(" "));
-        });
-        $("#boton-publicar").click((e) => {
-            let o = {
-                titulo: $("#inputTitulo").val(),
-                cats: $("#inputCategorias").val(),
-                text: tinymce.activeEditor.getContent()
-            };
-            console.log("Publicando anuncio, beep bop!", o);
+        $("#guardar_a").click((e) => {
+            window.alert("He pulsado el boton");
+            var name = $("#nombre").val();
+            var id = crearAlumno(nombre);
+            window.alert(id);
+            if (id !== 0) {
+                window.alert("Alumno creado satisfactoriamente" + id);
+            }
             e.preventDefault();
         });
     </script>
