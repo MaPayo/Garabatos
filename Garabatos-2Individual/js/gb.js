@@ -19,7 +19,7 @@ function createGroupItemUsers(alumno) {
     let m = Math.floor(Math.random() * 20);
     let id = 'a_' + Math.floor(Math.random() * 10000)
     const html = [
-        '<li id="', alumno.cid, '" class="list-group-item">', alumno.first_name,
+        '<li id="', alumno.cid, '" class="list-group-item" onclick=updateAlmInfo("', alumno.sid, '")>', alumno.first_name,
         '<span class="badge badge-dark badge-pill align-items-end">', m, '</span>',
         '</li>'
 
@@ -60,17 +60,11 @@ function createGroupEmail(mensaje) {
 }
 
 
-/*function showInfoUser(alumno) {
-    const html = ['<div class="tab-pane fade show active" id="info_', alumno.cid, '" role="tabpanel" aria-labelledby="info_', alumno.cid, '")>',
-        '<div class="p-3 mb-2 bg-secondary text-white">', alumno.first_name, '&nbsp;', alumno.last_name, '<button type="button" class="btn btn-secondary" id="guardar_a">Guardar</button></div>',
-
-        '</div>',
-        '</div>'
-
-    ];
+function showInfoUser(alumno) {
+    const html = ['<p>', alumno.first_name, '</p>'];
     return $(html.join(''));
 
-}*/
+}
 
 function createVmItem(params) {
     const stateToBadge = {
@@ -102,11 +96,27 @@ function createVmItem(params) {
 $(function() {
 
     window.updateAlmGrp = function updateAlmGrp(input) {
+        try {
+            $("#listUsers").empty()
+            Gb.globalState.classes.forEach(function(item) {
+                if (item.cid == input) {
+                    item.teachers.forEach(m => $("#listUsers").append(createGroupItemUsers(m)))
+                }
+            });
+        } catch (e) {
+            console.log('Error actualizando', e);
+        }
+
+    }
+
+
+    window.updateAlmInfo = function updateAlmInfo(input) {
             try {
-                $("#listUsers").empty()
-                Gb.globalState.classes.forEach(function(item) {
-                    if (item.cid == input) {
-                        item.teachers.forEach(m => $("#listUsers").append(createGroupItemUsers(m)))
+                $("#info").empty()
+                $('#emails').empty()
+                Gb.globalState.students.forEach(function(item) {
+                    if (item.sid == input) {
+                        m => $("#info").append(showInfoUser(m))
                     }
                 });
             } catch (e) {
