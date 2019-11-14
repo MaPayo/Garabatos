@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Garabatos</title>
+	<link rel="stylesheet" href="./css/bootstrap-4.3.1.css">
+	<link rel="stylesheet" href="./fonts/material-icons.css">
+	<link rel="stylesheet" href="./css/style.css?v=0.00000003">
+</head>
+
+<body class="not-logged">
+	<div id="login-form" class="visible-when-not-logged">
+		Formulario de inicio de sesión
+	</div>
+
+	<div class="visible-when-logged">
+
+		<!-- Cabecera y navegación -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav-mobile" aria-controls="main-nav-mobile" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="main-nav-mobile">
+				<a class="navbar-brand mb-0 h1" href="#">
+					<img src="./img/garabatos-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+					Garabatos
+				</a>
+
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="master-tab-nav">
+					<li class="nav-item active"><a class="nav-link" href="#" id="trigger-view-inbox">Mensajes</a></li>
+					<li class="nav-item"><a class="nav-link" href="#" id="trigger-view-classes">Clases</a></li>
+					<li class="nav-item"><a class="nav-link" href="#" id="trigger-view-users">Usuarios</a></li>
+				</ul>
+
+				<ul class="navbar-nav my-2 my-lg-0">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[Nombre del usuario]</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Garabatos v3.1 (grupo 04)</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#" id="trigger-logout">Cerrar sesión</a>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</nav>
+
+		<br>
+
+		<!-- view inbox -->
+		<div id="view-inbox">
+			<div class="container-fluid">
+				<div class="row">
+					<!-- left nav: filters -->
+					<div class="col-2">
+						<div>
+							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-compose"><i class="material-icons">add</i> Mensaje</button>
+						</div>
+
+						<br>
+
+						<div class="card">
+							<div class="card-header">
+								Filtrar
+							</div>
+							<ul class="list-group list-group-flush">
+
+								<!-- filter: received/sent/all -->
+								<li class="list-group-item">
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-received" value="received" id="trigger-view-inbox-received-received" checked>
+										<label class="form-check-label" for="trigger-view-inbox-received-received">Recibidos</label>
+									</div>
+
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-received" value="sent" id="trigger-view-inbox-received-sent">
+										<label class="form-check-label" for="trigger-view-inbox-received-sent">Enviados</label>
+									</div>
+
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-received" value="all" id="trigger-view-inbox-received-all">
+										<label class="form-check-label" for="trigger-view-inbox-received-all">Todos</label>
+									</div>
+								</li>
+
+								<!-- filter: archived/all -->
+								<li class="list-group-item">
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-archived" value="all" id="trigger-view-inbox-archived-all" checked>
+										<label class="form-check-label" for="trigger-view-inbox-archived-all">Todos</label>
+									</div>
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-archived" value="archived" id="trigger-view-inbox-archived-archived">
+										<label class="form-check-label" for="trigger-view-inbox-archived-archived">Archivados</label>
+									</div>
+								</li>
+
+								<!-- filter: read/unread/all -->
+								<li class="list-group-item">
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-read" value="unread" id="trigger-view-inbox-read-unread" checked>
+										<label class="form-check-label" for="trigger-view-inbox-read-unread">No leídos</label>
+									</div>
+
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-read" value="read" id="trigger-view-inbox-read-read">
+										<label class="form-check-label" for="trigger-view-inbox-read-read">Leídos</label>
+									</div>
+
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-read" value="all" id="trigger-view-inbox-read-all">
+										<label class="form-check-label" for="trigger-view-inbox-read-all">Todos</label>
+									</div>
+								</li>
+
+								<!-- filter: favs/all -->
+								<li class="list-group-item">
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-favs-" value="all" id="trigger-view-inbox-favs-all" checked>
+										<label class="form-check-label" for="trigger-view-inbox-favs-all">Todos</label>
+									</div>
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-inbox-favs-" value="favs" id="trigger-view-inbox-favs-favs">
+										<label class="form-check-label" for="trigger-view-inbox-favs-favs">Favoritos</label>
+									</div>
+								</li>
+
+								<li class="list-group-item">
+									<button type="button" class="btn btn-secondary btn-sm">Borrar filtros</button>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+					<!-- left list: matching messages -->
+					<div class="col-4">
+						<div class="card">
+							<div class="card-header">
+								<div><p>Mensajes</p></div>
+								<div>
+									<div class="dropdown">
+										<button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="bulk-actions-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Acciones en grupo
+										</button>
+										<div class="dropdown-menu" aria-labelledby="bulk-actions-menu">
+											<a class="dropdown-item" href="#">Archivar</a>
+											<a class="dropdown-item" href="#">Eliminar</a>
+											<a class="dropdown-item" href="#">Marcar como no leído</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="list-group list-group-flush" id="view-inbox-message-list">
+								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start trigger-current-message" data-message-id="A">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">Cras justo odio</h5>
+										<small>Ayer</small>
+									</div>
+									<p class="mb-1">Extracto del mensaje</p>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start trigger-current-message" data-message-id="B">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">Dapibus ac facilisis in</h5>
+										<small>Ayer</small>
+									</div>
+									<p class="mb-1">Extracto del mensaje</p>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start trigger-current-message" data-message-id="C">
+									<div class="d-flex w-100 justify-content-between">
+										<h5 class="mb-1">Vestibulum at eros</h5>
+										<small>Ayer</small>
+									</div>
+									<p class="mb-1">Extracto del mensaje</p>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- right form: current -->
+					<div class="col">
+						<div id="view-inbox-right-panel">
+
+							<!-- default text -->
+							<div class="card" id="view-inbox-current-default">
+								<div class="card-body">
+									<p>Seleccione un mensaje para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-sm btn-outline-primary trigger-compose"><i class="material-icons">add</i> Mensaje</button> para redactar un nuevo mensaje y enviarlo.</p>
+								</div>
+							</div>
+
+							<!-- current message -->
+							<div id="view-inbox-current-message">
+								<div class="card">
+									<div class="card-header">
+										<h3 id="current-message-title" class="card-title">Dapibus ac facilisis in</h3>
+
+										<div id="current-message-info">
+											<p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Remitente">person</i> <span>Nombre del remitente</span></p>
+											<p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Destinatarios">mail</i> <span>Nombre de los destinatarios</span></p>
+											<p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Fecha">calendar_today</i> <span>19/11/2003 13:33</span></p>
+										</div>
+
+										<div id="current-message-actions" class="btn-group" role="group">
+											<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-archive" title="Archivar">
+												<i class="material-icons">archive</i>
+											</button>
+											<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-delete" title="Eliminar">
+												<i class="material-icons">delete</i>
+											</button>
+											<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-markunread" title="Marcar como no leído">
+												<i class="material-icons">markunread</i>
+											</button>
+										</div>
+									</div>
+									<div class="card-body">
+										<p>Contenido del mensaje</p>
+
+										<button type="button" class="btn btn-outline-secondary" id="trigger-current-message-reply">
+											<i class="material-icons">reply</i> Responder
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<!-- current message reply -->
+							<div id="view-inbox-reply-box">
+								<br>
+
+								<div class="card">
+									<div class="card-header">
+										Responder a <strong>Dapibus ac facilisis in</strong>
+									</div>
+
+									<div class="card-body">
+										<form>
+											<div class="form-group">
+												<label for="reply-form-body">Cuerpo del mensaje</label>
+												<textarea class="default-tinymce-editor" id="reply-form-body" class="form-control"></textarea>
+											</div>
+
+											<div class="float-right">
+												<button type="button" id="trigger-current-message-reply-cancel" class="btn btn-outline-danger">Cancelar</button>
+												<button type="button" id="trigger-current-message-reply-send" class="btn btn-primary">Enviar</button>
+											</div>
+
+											<div class="clearfix"></div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<!-- compose -->
+							<div class="card" id="view-inbox-compose">
+								<div class="card-header">
+									<h3 class="card-title">Redactar nuevo mensaje</h3>
+								</div>
+								<div class="card-body">
+									<form>
+										<div class="form-group">
+											<label for="compose-form-from">Remitente</label>
+											<input type="text" class="form-control" id="compose-form-from" placeholder="Nombre del remitente" disabled>
+										</div>
+
+										<div class="form-group">
+											<label for="compose-form-to">Destinatario</label>
+											<input type="text" class="form-control" id="compose-form-to" placeholder="Introduzca un destinatario para buscar (autocomplete)">
+										</div>
+
+										<div class="form-group">
+											<label for="compose-form-subject">Asunto</label>
+											<input type="text" class="form-control" id="compose-form-subject" placeholder="Asunto del mensaje">
+										</div>
+
+										<div class="form-group">
+											<label for="compose-form-body">Cuerpo del mensaje</label>
+											<textarea class="default-tinymce-editor" id="compose-form-body" class="form-control"></textarea>
+										</div>
+
+										<div class="float-right">
+											<button type="button" id="trigger-compose-cancel" class="btn btn-outline-danger">Cancelar</button>
+											<button type="button" id="trigger-compose-send" class="btn btn-primary">Enviar</button>
+										</div>
+
+										<div class="clearfix"></div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- classes view -->
+		<div id="view-classes">
+
+			<div class="container-fluid">
+				<div class="row">
+					<!-- left nav: filters -->
+					<div class="col-2">
+						<div>
+							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-class"><i class="material-icons">add</i> Clase</button>
+						</div>
+
+						<br>
+
+						<div class="card">
+							<div class="card-header">
+								Todas mis clases
+							</div>
+							<ul class="list-group list-group-flush" id="view-classes-list"></ul>
+						</div>
+					</div>
+
+					<!-- left list: class members -->
+					<div class="col-4">
+						<div class="card" id="view-classes-members-list">
+							<div class="card-header">
+								<div><p>Miembros de [nombre de una clase]</p></div>
+								<div>
+									<div class="dropdown">
+										<button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="bulk-actions-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Acciones en grupo
+										</button>
+										<div class="dropdown-menu" aria-labelledby="bulk-actions-menu">
+											<a class="dropdown-item" href="#">Eliminar de la clase</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item" data-class-id=""><label><input type="checkbox" name=""> [Nombre de un estudiante]</label></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- right form: current -->
+					<div class="col">
+						<div id="view-classes-right-panel">
+
+							<!-- default text -->
+							<div class="card" id="view-classes-current-default">
+								<div class="card-body">
+									<p>Seleccione una clase para verla y gestionarla aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm trigger-create-class"><i class="material-icons">add</i> Clase</button> para crear una nueva clase.</p>
+								</div>
+							</div>
+
+							<!-- create/view/edit student -->
+							<div class="card" id="view-classes-current-class">
+								<div class="card-header">
+									<h3 class="card-title">Crear/ver/editar clase</h3>
+								</div>
+
+								<div class="card-body">
+									
+									Formulario de creación, vista y edición a la derecha
+										- Editar datos
+										- Editar componentes
+										- Mandar mensaje a toda la clase
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- users view -->
+		<div id="view-users">
+
+			<div class="container-fluid">
+				<div class="row">
+					<!-- left nav: filters -->
+					<div class="col-2">
+						<div>
+							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-student"><i class="material-icons">add</i> Estudiante</button>
+							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-guardian"><i class="material-icons">add</i> Responsable</button>
+							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-teacher"><i class="material-icons">add</i> Profesor</button>
+						</div>
+
+						<br>
+
+						<div class="card">
+							<div class="card-header">
+								Filtrar
+							</div>
+							<ul class="list-group list-group-flush">
+
+								<li class="list-group-item">
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="all" id="trigger-view-users-type-all" checked>
+										<label class="form-check-label" for="trigger-view-users-type-all">Todos</label>
+									</div>
+
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="students" id="trigger-view-users-type-students" checked>
+										<label class="form-check-label" for="trigger-view-users-type-students">Estudiantes</label>
+									</div>
+
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="guardians" id="trigger-view-users-type-guardians">
+										<label class="form-check-label" for="trigger-view-users-type-guardians">Responsables</label>
+									</div>
+
+									<div class="form-check">
+										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="teachers" id="trigger-view-users-type-teachers">
+										<label class="form-check-label" for="trigger-view-users-type-teachers">Profesores</label>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+					<!-- left list: matching messages -->
+					<div class="col-4">
+						<div class="card">
+							<div class="card-header">
+								<div><p>[Tipo de usuario]</p></div>
+								<div>
+									<div class="dropdown">
+										<button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="bulk-actions-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Acciones en grupo
+										</button>
+										<div class="dropdown-menu" aria-labelledby="bulk-actions-menu">
+											<a class="dropdown-item" href="#">Eliminar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="list-group list-group-flush visible-user-type-student" id="view-users-list">
+								<a href="#" class="list-group-item list-group-item-action trigger-current-user user-type-student" data-user-type="student" data-user-id="">[Nombre de un estudiante]</a>
+								<a href="#" class="list-group-item list-group-item-action trigger-current-user user-type-guardian" data-user-type="guardian" data-user-id="">[Nombre de un responsable]</a>
+								<a href="#" class="list-group-item list-group-item-action trigger-current-user user-type-teacher" data-user-type="teacher" data-user-id="">[Nombre de un profesor]</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- right form: current -->
+					<div class="col">
+						<div id="view-users-right-panel">
+
+							<!-- default text -->
+							<div class="card" id="view-users-current-default">
+								<div class="card-body">
+									<p>Seleccione un usuario para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm trigger-create-student"><i class="material-icons">add</i> Estudiante</button> <button type="button" class="btn btn-outline-primary btn-sm trigger-create-guardian"><i class="material-icons">add</i> Responsable</button> <button type="button" class="btn btn-outline-primary btn-sm trigger-create-teacher"><i class="material-icons">add</i> Profesor</button> para crear uno nuevo.</p>
+								</div>
+							</div>
+
+							<!-- create/view/edit student -->
+							<div class="card" id="view-users-current-student">
+								<div class="card-header">
+									<h3 class="card-title">Crear/ver/editar estudiante</h3>
+								</div>
+
+								<div class="card-body">
+									<p>sid</p>
+									<p>first_name</p>
+									<p>last_name</p>
+									<p>cid</p>
+									<p>guardians</p>
+								</div>
+							</div>
+
+							<!-- create/view/edit guardian -->
+							<div class="card" id="view-users-current-guardian">
+								<div class="card-header">
+									<h3 class="card-title">Crear/ver/editar responsable</h3>
+								</div>
+
+								<div class="card-body">
+									<p>uid</p>
+									<p>type (guardian)</p>
+									<p>first_name</p>
+									<p>last_name</p>
+									<p>tels</p>
+									<p>classes</p>
+									<p>students</p>
+									<p>pass</p>
+								</div>
+							</div>
+
+							<!-- create/view/edit teacher -->
+							<div class="card" id="view-users-current-teacher">
+								<div class="card-header">
+									<h3 class="card-title">Crear/ver/editar profesor</h3>
+								</div>
+
+								<div class="card-body">
+									<p>uid</p>
+									<p>type (teacher)</p>
+									<p>first_name</p>
+									<p>last_name</p>
+									<p>tels</p>
+									<p>classes</p>
+									<p>students</p>
+									<p>pass</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<br>
+
+	<script src="js/jquery-3.3.1.js"></script>
+	<script src="js/bootstrap.bundle-4.3.1.js"></script>
+	<script src="js/tinymce.min.js"></script>
+	<script src="js/gb.js" type="module"></script>
+</body>
+
+</html>
