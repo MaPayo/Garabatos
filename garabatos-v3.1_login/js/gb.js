@@ -226,7 +226,7 @@ function rebootUserList() {
 	});
 }
 
-//funcion encargada de iniciar sesion
+//Funcion encargada de iniciar sesion
 function login(user, pass) {
 	Gb.connect("http://gin.fdi.ucm.es:8080/api/");
 
@@ -251,24 +251,16 @@ $(window).on("load", function () {
 
 	let token = Gb.login("eQd3cA", "EOvp6Q");
 
-//	let serverToken = Gb.getToken();
-
-/*	let patata = Gb.login("eQd3cA", "EOvp6Q").then(function () {
-		rebootClassList();
-		rebootUserList();
-	});*/
-
 /*	Gb.login("eQd3cA", "EOvp6Q").then(function () {
 		rebootClassList();
 		rebootUserList();
 	});*/
 
-//	Gb.logout();
 
 	/**
 	 * Comprobar si el usuario ha iniciado sesión
 	 */
-	if (loggg) {
+	if (token !== undefined) {
 		$("body").removeClass().addClass("logged visible-view-inbox");
 	}
 
