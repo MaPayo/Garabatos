@@ -1,0 +1,120 @@
+/**
+ * Selective show - login related
+ */
+
+.visible-when-not-logged,
+.visible-when-logged {
+	display: none;
+}
+
+.not-logged .visible-when-not-logged,
+.logged .visible-when-logged {
+	display: block;
+}
+
+/**
+ * Selective show - view groups related
+ */
+
+#view-inbox,
+#view-classes,
+#view-users {
+	display: none;
+}
+
+.visible-view-inbox #view-inbox,
+.visible-view-classes #view-classes,
+.visible-view-users #view-users {
+	display: block;
+}
+
+/**
+ * Selective show - inbox view related
+ */
+
+#view-inbox-current-message,
+#view-inbox-reply-box,
+#view-inbox-compose {
+	display: none;
+}
+
+/* Hide default text if current message or compose are open */
+
+#view-inbox-right-panel.visible-current-message #view-inbox-current-default,
+#view-inbox-right-panel.visible-compose #view-inbox-current-default {
+	display: none;
+}
+
+#view-inbox-right-panel.visible-current-message #view-inbox-current-message,
+#view-inbox-right-panel.visible-reply-box #view-inbox-reply-box,
+#view-inbox-right-panel.visible-compose #view-inbox-compose {
+	display: block;
+}
+
+/**
+ * #TODO
+ * Selective show - inbox view message filter related
+ */
+
+/*.trigger-current-message {
+	display: none;
+}
+
+#view-inbox-message-list*/
+
+/**
+ * Selective show - user type related
+ */
+
+.user-type-student,
+.user-type-guardian,
+.user-type-teacher {
+	display: none;
+}
+
+.visible-user-type-student .user-type-student,
+.visible-user-type-guardian .user-type-guardian,
+.visible-user-type-teacher .user-type-teacher {
+	display: block;
+}
+
+/**
+ * Selective show - users view related
+ */
+
+#view-users-current-student,
+#view-users-current-guardian,
+#view-users-current-teacher {
+	display: none;
+}
+
+/* Hide default text if current message or compose are open */
+
+#view-users-right-panel.visible-users-current-student #view-users-current-default,
+#view-users-right-panel.visible-users-current-guardian #view-users-current-default,
+#view-users-right-panel.visible-users-current-teacher #view-users-current-default {
+	display: none;
+}
+
+#view-users-right-panel.visible-users-current-student #view-users-current-student,
+#view-users-right-panel.visible-users-current-guardian #view-users-current-guardian,
+#view-users-right-panel.visible-users-current-teacher #view-users-current-teacher {
+	display: block;
+}
+
+/**
+ * Selective show - class member list related
+ */
+
+#view-classes-members-list,
+#view-classes-current-class {
+	display: none;
+}
+
+.visible-classes-current-class #view-classes-current-class {
+	display: block;
+}
+
+.visible-classes-current-class #view-classes-current-default {
+	display: none;
+}
