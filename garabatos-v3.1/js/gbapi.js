@@ -14,12 +14,12 @@
  * El estado global de la aplicación.
  */
 class GlobalState {
-	constructor(classes, students, users, messages) {
+  constructor(classes, students, users, messages) {
 	this.classes = classes || [];
 	this.students = students || [];
 	this.users = users || [];
 	this.messages = messages || [];
-	}
+  }
 }
 
 /**
@@ -30,7 +30,7 @@ class EClass {
 	this.cid = cid;	 // id de la clase
 	this.students = students || []; // students; por SIDs (dnis o similar de estudiente)
 	this.teachers = teachers || []; // profes; por UIDs (dnis o similar de "User")
-	}
+  }
 }
 
 /**
@@ -38,11 +38,11 @@ class EClass {
 */
 class Student {
 	constructor(sid, first_name, last_name, cid, guardians) {
-		this.sid = sid;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.cid = cid;
-		this.guardians = guardians || []; // profes; por UIDs (dnis o similar de "User")
+	  this.sid = sid;
+	  this.first_name = first_name;
+	  this.last_name = last_name;
+	  this.cid = cid;
+	  this.guardians = guardians || []; // profes; por UIDs (dnis o similar de "User")
 	}
 }
 
@@ -66,10 +66,10 @@ class User {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.tels = tels || [];
-		this.classes = classes || [];	 // cids de clases en las que tiene alumnos (solo si profe)
+		this.classes = classes || [];   // cids de clases en las que tiene alumnos (solo si profe)
 		this.students = students || []; // students; por SIDs (solo si padre)
 		this.password = pass;
-	}	
+	}
 }
 
 /**
@@ -94,13 +94,13 @@ class Message {
 		if (parent) {
 			this.parent = parent; // msgid of parent, only if reply. If reply, no "to"
 		} else {
-			this.to = to;				 // array with UIDs and/or CIDs (to send to aclass)
+			this.to = to;			   // array with UIDs and/or CIDs (to send to aclass)
 		}
 		this.labels = labels || []; // of MessageLabels
 		labels.forEach(label => Util.checkEnum(label, MessageLabels));
-		this.title = title;	 
-		this.body = body;	 
-	}	
+		this.title = title;
+		this.body = body;
+	}
 }
 
 
@@ -137,20 +137,20 @@ class Util {
 	}
 
 	static randomChar(alphabet) {
-		return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+	  return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
 	}
 	
 	static randomString(count, alphabet) {
-		const n = count || 5;
-		const valid = alphabet || UPPER + LOWER + DIGITS;
-		return new Array(n).fill('').map(() => this.randomChar(valid)).join('');
+	  const n = count || 5;
+	  const valid = alphabet || UPPER + LOWER + DIGITS;
+	  return new Array(n).fill('').map(() => this.randomChar(valid)).join('');
 	}
 
 	static randomPass() {
-		const n = 7;
-		const prefix = this.randomChar(UPPER) + this.randomChar(LOWER) + this.randomChar(DIGITS);
-		const valid = UPPER + LOWER + DIGITS;
-		return prefix + new Array(n-3).fill('').map(() => this.randomChar(valid)).join('');
+	  const n = 7;
+	  const prefix = this.randomChar(UPPER) + this.randomChar(LOWER) + this.randomChar(DIGITS);
+	  const valid = UPPER + LOWER + DIGITS;
+	  return prefix + new Array(n-3).fill('').map(() => this.randomChar(valid)).join('');
 	}
 
 	/**
@@ -213,7 +213,7 @@ class Util {
 			cid, []);
 	}
 
-	 /**
+   /**
 	 * Genera un usuario del tipo indicado al azar, con una clase
 	 */
 	static randomUser(type, classes, students) {
@@ -229,8 +229,8 @@ class Util {
 			students,
 			Util.randomPass()
 		);
-		return u;		
-	}	
+		return u;
+	}
 
 	/**
 	 * Llena un array con el resultado de llamar a una funcion
@@ -242,7 +242,7 @@ class Util {
 		return results;
 	}
 
-	 /**
+   /**
 	 * Genera un mensaje
 	 */
 	static randomMessage(users) {
@@ -252,9 +252,9 @@ class Util {
 			Util.randomChoice(users),
 			Util.fill(Util.randomInRange(1,5), () => Util.randomChoice(users)),
 			Util.randomSample(Object.values(MessageLabels), Util.randomInRange(1,5)),
-			Util.randomText(Util.randomInRange(3,7)),		
+			Util.randomText(Util.randomInRange(3,7)),
 			Util.randomText(Util.randomInRange(10,20)));
-	}	
+	}
 }
 
 
@@ -275,23 +275,25 @@ function getId(id, object) {
 
 // sube datos en json, espera json de vuelta; lanza error por fallos (status != 200)
 function go(url, method, data = {}) {
-	let params = {
-		method: method, // POST, GET, POST, PUT, DELETE, etc.
-		headers: { "Content-Type": "application/json; charset=utf-8", },
-		body: JSON.stringify(data)
-	};
-	if (method === "GET") {
-		// GET requests cannot have body; I could URL-encode, but it would not be used here
-		delete params.body;
-	}
-	console.log("sending", url, params)
-	return fetch(url, params).then(response => {
+  let params = {
+	method: method, // POST, GET, POST, PUT, DELETE, etc.
+	headers: {
+	  "Content-Type": "application/json; charset=utf-8",
+	},
+	body: JSON.stringify(data)
+  };
+  if (method === "GET") {
+	  // GET requests cannot have body; I could URL-encode, but it would not be used here
+	  delete params.body;
+  }
+  console.log("sending", url, params)
+  return fetch(url, params).then(response => {
 	if (response.ok) {
 		return data = response.json();
 	} else {
 		response.text().then(t => {throw new Error(t + ", at " + url)});
 	}
-	})
+  })
 }
 
 // actualiza el estado de la aplicación con el resultado de una petición
@@ -310,7 +312,7 @@ function updateState(data) {
 }
 
 // el estado global
-let globalState = new GlobalState();	 
+let globalState = new GlobalState();   
 
 // la direccion del servidor
 let serverApiUrl = "//localhost:8080/api/";
@@ -332,11 +334,11 @@ function resolve(id) {
 // hace login. Todas las futuras operaciones usan el token devuelto
 function login(uid, pass) {
 	return go(serverApiUrl + "login", 'POST', {uid: uid, password: pass})
-		.then(d => { if (! d) return; serverToken = d.token; return updateState(d); });
+		.then(d => { if (!d) return; serverToken = d.token; updateState(d); return d;});
 }
 
 // hace logout, destruyendo el token usado
-function logout() {
+function logout(id) {
 	return go(serverApiUrl + serverToken + "/logout", 'POST');
 }
 
@@ -390,34 +392,34 @@ function initialize() {
 
 // cosas que estarán disponibles desde fuera de este módulo
 export {
-	
-	// Clases
-	EClass,		// a class; uses cid as id
-	Student,		 // a student; uses sid as id
-	UserRoles,	 // possible user roles
-	User,			// a user: admin, teacher or guardian; uses uid
-	MessageLabels, // possible message labels
-	Message,		 // a message; uses msgid
-	GlobalState,	 // the whole state of the application
-	
-	// Estado
-	globalState,	 // el estado de la aplicación, según la última respuesta
-	resolve,		 // consulta un id en la cache
-	connect,		 // establece URL del servidor. Debe llamarse antes de nada
+  
+  // Clases
+  EClass,		// a class; uses cid as id
+  Student,	   // a student; uses sid as id
+  UserRoles,	 // possible user roles
+  User,		  // a user: admin, teacher or guardian; uses uid
+  MessageLabels, // possible message labels
+  Message,	   // a message; uses msgid
+  GlobalState,   // the whole state of the application
+  
+  // Estado
+  globalState,   // el estado de la aplicación, según la última respuesta
+  resolve,	   // consulta un id en la cache
+  connect,	   // establece URL del servidor. Debe llamarse antes de nada
 
-	// Métodos. Todos (menos login / initialize) usan el token que devuelve login
-	login,		 // (uid, pass) --> returns valid token for user
-	logout,		// ()			--> deletes a valid token
-	addClass,	// (eclass)
-	addStudent,	// (student)
-	addUser,	 // (user)
-	rm,			// (cid || sid || uid || msgid) 
-	set,		 // (eclass || student || user || message)
-	send,		// (message)
-	list,		// ()
+  // Métodos. Todos (menos login / initialize) usan el token que devuelve login
+  login,	   // (uid, pass) --> returns valid token for user
+  logout,	  // ()		  --> deletes a valid token
+  addClass,	// (eclass)
+  addStudent,  // (student)
+  addUser,	 // (user)
+  rm,		  // (cid || sid || uid || msgid) 
+  set,		 // (eclass || student || user || message)
+  send,		// (message)
+  list,		// ()
 
-	initialize,	// ()			--> se puede llamar sólo 1 vez, tras limpiar el servidor
+  initialize,  // ()		  --> se puede llamar sólo 1 vez, tras limpiar el servidor
 
-	// Utilidades varias que no forman parte de la API
-	Util,
+  // Utilidades varias que no forman parte de la API
+  Util,
 };
