@@ -276,15 +276,13 @@ function getId(id, object) {
 // sube datos en json, espera json de vuelta; lanza error por fallos (status != 200)
 function go(url, method, data = {}) {
 	let params = {
-	method: method, // POST, GET, POST, PUT, DELETE, etc.
-	headers: {
-		"Content-Type": "application/json; charset=utf-8",
-	},
-	body: JSON.stringify(data)
+		method: method, // POST, GET, POST, PUT, DELETE, etc.
+		headers: { "Content-Type": "application/json; charset=utf-8", },
+		body: JSON.stringify(data)
 	};
 	if (method === "GET") {
-	// GET requests cannot have body; I could URL-encode, but it would not be used here
-	delete params.body;
+		// GET requests cannot have body; I could URL-encode, but it would not be used here
+		delete params.body;
 	}
 	console.log("sending", url, params)
 	return fetch(url, params).then(response => {
@@ -334,11 +332,11 @@ function resolve(id) {
 // hace login. Todas las futuras operaciones usan el token devuelto
 function login(uid, pass) {
 	return go(serverApiUrl + "login", 'POST', {uid: uid, password: pass})
-		.then(d => { if (!d) return; serverToken = d.token; updateState(d);});
+		.then(d => { if (! d) return; serverToken = d.token; return updateState(d); });
 }
 
 // hace logout, destruyendo el token usado
-function logout(id) {
+function logout() {
 	return go(serverApiUrl + serverToken + "/logout", 'POST');
 }
 

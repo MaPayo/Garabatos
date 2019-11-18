@@ -1,4 +1,26 @@
 /**
+ * Login form
+ */
+
+#login-form-wrapper {
+    max-width: 428px;
+    margin: 0 auto;
+    padding: 64px;
+}
+
+#login-form-logo img, #login-form-logo span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+#login-form-title {
+    margin: 30px 0;
+}
+
+
+/**
  * Selective show - login related
  */
 

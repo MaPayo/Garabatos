@@ -7,15 +7,39 @@
 	<title>Garabatos</title>
 	<link rel="stylesheet" href="./css/bootstrap-4.3.1.css">
 	<link rel="stylesheet" href="./fonts/material-icons.css">
-	<link rel="stylesheet" href="./css/style.css?v=0.00000003">
+	<link rel="stylesheet" href="./css/style.css?v=0.00000004">
 </head>
 
 <body class="not-logged">
-	<div id="login-form" class="visible-when-not-logged">
-		Formulario de inicio de sesión
+
+	<!-- Pagina de login -->
+	<div id="login-form-container" class="visible-when-not-logged">
+		<div id="login-form-wrapper">
+			<div id="login-form-header">
+				<div id="login-form-logo">
+					<img src="./img/garabatos-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+					<span>Garabatos</span>
+				</div>
+				<div id="login-form-title">
+					<h1>Iniciar sesión</h1>
+				</div>
+			</div>
+			<form id="login-form" method="post">
+				<div class="form-group">
+					<label for="compose-form-from">Usuario</label>
+					<input type="text" class="form-control" name="login_form_user" id="login_form_user" value="eQd3cA">
+				</div>
+				<div class="form-group">
+					<label for="compose-form-from">Contraseña</label>
+					<input type="password" class="form-control" name="login_form_password" id="login_form_password" value="EOvp6Q">
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Iniciar sesión</button> 
+			</form>
+		</div>
 	</div>
 
-	<div class="visible-when-logged">
+	<div id="logged-page" class="visible-when-logged">
 
 		<!-- Cabecera y navegación -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
@@ -37,8 +61,8 @@
 
 				<ul class="navbar-nav my-2 my-lg-0">
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[Nombre del usuario]</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="logged-in-user-name" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[Nombre del usuario]</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="logged-in-user-name">
 							<a class="dropdown-item" href="#">Garabatos v3.1 (grupo 04)</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#" id="trigger-logout">Cerrar sesión</a>
@@ -58,7 +82,7 @@
 					<!-- left nav: filters -->
 					<div class="col-2">
 						<div>
-							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-compose"><i class="material-icons">add</i> Mensaje</button>
+							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-open-compose"><i class="material-icons">add</i> Mensaje</button>
 						</div>
 
 						<br>
@@ -71,61 +95,61 @@
 
 								<!-- filter: received/sent/all -->
 								<li class="list-group-item">
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-received" value="received" id="trigger-view-inbox-received-received" checked>
-										<label class="form-check-label" for="trigger-view-inbox-received-received">Recibidos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="received" id="trigger-view-inbox-received-received" checked>
+										<label class="custom-control-label" for="trigger-view-inbox-received-received">Recibidos</label>
 									</div>
 
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-received" value="sent" id="trigger-view-inbox-received-sent">
-										<label class="form-check-label" for="trigger-view-inbox-received-sent">Enviados</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="sent" id="trigger-view-inbox-received-sent">
+										<label class="custom-control-label" for="trigger-view-inbox-received-sent">Enviados</label>
 									</div>
 
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-received" value="all" id="trigger-view-inbox-received-all">
-										<label class="form-check-label" for="trigger-view-inbox-received-all">Todos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="all" id="trigger-view-inbox-received-all">
+										<label class="custom-control-label" for="trigger-view-inbox-received-all">Todos</label>
 									</div>
 								</li>
 
 								<!-- filter: archived/all -->
 								<li class="list-group-item">
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-archived" value="all" id="trigger-view-inbox-archived-all" checked>
-										<label class="form-check-label" for="trigger-view-inbox-archived-all">Todos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-archived" value="all" id="trigger-view-inbox-archived-all" checked>
+										<label class="custom-control-label" for="trigger-view-inbox-archived-all">Todos</label>
 									</div>
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-archived" value="archived" id="trigger-view-inbox-archived-archived">
-										<label class="form-check-label" for="trigger-view-inbox-archived-archived">Archivados</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-archived" value="archived" id="trigger-view-inbox-archived-archived">
+										<label class="custom-control-label" for="trigger-view-inbox-archived-archived">Archivados</label>
 									</div>
 								</li>
 
 								<!-- filter: read/unread/all -->
 								<li class="list-group-item">
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-read" value="unread" id="trigger-view-inbox-read-unread" checked>
-										<label class="form-check-label" for="trigger-view-inbox-read-unread">No leídos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="unread" id="trigger-view-inbox-read-unread" checked>
+										<label class="custom-control-label" for="trigger-view-inbox-read-unread">No leídos</label>
 									</div>
 
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-read" value="read" id="trigger-view-inbox-read-read">
-										<label class="form-check-label" for="trigger-view-inbox-read-read">Leídos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="read" id="trigger-view-inbox-read-read">
+										<label class="custom-control-label" for="trigger-view-inbox-read-read">Leídos</label>
 									</div>
 
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-read" value="all" id="trigger-view-inbox-read-all">
-										<label class="form-check-label" for="trigger-view-inbox-read-all">Todos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="all" id="trigger-view-inbox-read-all">
+										<label class="custom-control-label" for="trigger-view-inbox-read-all">Todos</label>
 									</div>
 								</li>
 
 								<!-- filter: favs/all -->
 								<li class="list-group-item">
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-favs-" value="all" id="trigger-view-inbox-favs-all" checked>
-										<label class="form-check-label" for="trigger-view-inbox-favs-all">Todos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-favs-" value="all" id="trigger-view-inbox-favs-all" checked>
+										<label class="custom-control-label" for="trigger-view-inbox-favs-all">Todos</label>
 									</div>
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-inbox-favs-" value="favs" id="trigger-view-inbox-favs-favs">
-										<label class="form-check-label" for="trigger-view-inbox-favs-favs">Favoritos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-inbox-favs-" value="favs" id="trigger-view-inbox-favs-favs">
+										<label class="custom-control-label" for="trigger-view-inbox-favs-favs">Favoritos</label>
 									</div>
 								</li>
 
@@ -141,42 +165,10 @@
 					<div class="col-4">
 						<div class="card">
 							<div class="card-header">
-								<div><p>Mensajes</p></div>
-								<div>
-									<div class="dropdown">
-										<button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="bulk-actions-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Acciones en grupo
-										</button>
-										<div class="dropdown-menu" aria-labelledby="bulk-actions-menu">
-											<a class="dropdown-item" href="#">Archivar</a>
-											<a class="dropdown-item" href="#">Eliminar</a>
-											<a class="dropdown-item" href="#">Marcar como no leído</a>
-										</div>
-									</div>
-								</div>
+								<h5 class="mb-0">Mensajes</h5>
 							</div>
 							<div class="list-group list-group-flush" id="view-inbox-message-list">
-								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start trigger-current-message" data-message-id="A">
-									<div class="d-flex w-100 justify-content-between">
-										<h5 class="mb-1">Cras justo odio</h5>
-										<small>Ayer</small>
-									</div>
-									<p class="mb-1">Extracto del mensaje</p>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start trigger-current-message" data-message-id="B">
-									<div class="d-flex w-100 justify-content-between">
-										<h5 class="mb-1">Dapibus ac facilisis in</h5>
-										<small>Ayer</small>
-									</div>
-									<p class="mb-1">Extracto del mensaje</p>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start trigger-current-message" data-message-id="C">
-									<div class="d-flex w-100 justify-content-between">
-										<h5 class="mb-1">Vestibulum at eros</h5>
-										<small>Ayer</small>
-									</div>
-									<p class="mb-1">Extracto del mensaje</p>
-								</a>
+								<div class="list-group-item flex-column align-items-start"><div class="d-flex w-100 justify-content-between">No hay ningún mensaje</div></div>
 							</div>
 						</div>
 					</div>
@@ -188,7 +180,7 @@
 							<!-- default text -->
 							<div class="card" id="view-inbox-current-default">
 								<div class="card-body">
-									<p>Seleccione un mensaje para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-sm btn-outline-primary trigger-compose"><i class="material-icons">add</i> Mensaje</button> para redactar un nuevo mensaje y enviarlo.</p>
+									<p>Seleccione un mensaje para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-sm btn-outline-primary trigger-open-compose"><i class="material-icons">add</i> Mensaje</button> para redactar un nuevo mensaje y enviarlo.</p>
 								</div>
 							</div>
 
@@ -321,17 +313,7 @@
 					<div class="col-4">
 						<div class="card" id="view-classes-members-list">
 							<div class="card-header">
-								<div><p>Miembros de [nombre de una clase]</p></div>
-								<div>
-									<div class="dropdown">
-										<button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="bulk-actions-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Acciones en grupo
-										</button>
-										<div class="dropdown-menu" aria-labelledby="bulk-actions-menu">
-											<a class="dropdown-item" href="#">Eliminar de la clase</a>
-										</div>
-									</div>
-								</div>
+								<h5 class="mb-0">Miembros de <span id="current-class-name">[nombre de una clase]</span></h5>
 							</div>
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item" data-class-id=""><label><input type="checkbox" name=""> [Nombre de un estudiante]</label></li>
@@ -393,24 +375,24 @@
 							<ul class="list-group list-group-flush">
 
 								<li class="list-group-item">
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="all" id="trigger-view-users-type-all" checked>
-										<label class="form-check-label" for="trigger-view-users-type-all">Todos</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="all" id="trigger-view-users-type-all" disabled>
+										<label class="custom-control-label" for="trigger-view-users-type-all">Todos</label>
 									</div>
 
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="students" id="trigger-view-users-type-students" checked>
-										<label class="form-check-label" for="trigger-view-users-type-students">Estudiantes</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="students" id="trigger-view-users-type-students" disabled>
+										<label class="custom-control-label" for="trigger-view-users-type-students">Estudiantes</label>
 									</div>
 
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="guardians" id="trigger-view-users-type-guardians">
-										<label class="form-check-label" for="trigger-view-users-type-guardians">Responsables</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="guardians" id="trigger-view-users-type-guardians" disabled>
+										<label class="custom-control-label" for="trigger-view-users-type-guardians">Responsables</label>
 									</div>
 
-									<div class="form-check">
-										<input type="radio" class="form-check-input" name="trigger-view-users-type" value="teachers" id="trigger-view-users-type-teachers">
-										<label class="form-check-label" for="trigger-view-users-type-teachers">Profesores</label>
+									<div class="custom-control custom-radio">
+										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="teachers" id="trigger-view-users-type-teachers" disabled>
+										<label class="custom-control-label" for="trigger-view-users-type-teachers">Profesores</label>
 									</div>
 								</li>
 
@@ -422,22 +404,10 @@
 					<div class="col-4">
 						<div class="card">
 							<div class="card-header">
-								<div><p>[Tipo de usuario]</p></div>
-								<div>
-									<div class="dropdown">
-										<button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="bulk-actions-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Acciones en grupo
-										</button>
-										<div class="dropdown-menu" aria-labelledby="bulk-actions-menu">
-											<a class="dropdown-item" href="#">Eliminar</a>
-										</div>
-									</div>
-								</div>
+								<h5 class="mb-0" id="current-user-type-title">Todos los usuarios</h5>
 							</div>
-							<div class="list-group list-group-flush visible-user-type-student" id="view-users-list">
-								<a href="#" class="list-group-item list-group-item-action trigger-current-user user-type-student" data-user-type="student" data-user-id="">[Nombre de un estudiante]</a>
-								<a href="#" class="list-group-item list-group-item-action trigger-current-user user-type-guardian" data-user-type="guardian" data-user-id="">[Nombre de un responsable]</a>
-								<a href="#" class="list-group-item list-group-item-action trigger-current-user user-type-teacher" data-user-type="teacher" data-user-id="">[Nombre de un profesor]</a>
+							<div class="list-group list-group-flush visible-user-type-student visible-user-type-guardian visible-user-type-teacher" id="view-users-list">
+								<div class="list-group-item flex-column align-items-start"><div class="d-flex w-100 justify-content-between">No hay ningún usuario</div></div>
 							</div>
 						</div>
 					</div>
