@@ -2,642 +2,646 @@
 <html lang="es">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Garabatos</title>
-	<link rel="stylesheet" href="./css/bootstrap-4.3.1.css">
-	<link rel="stylesheet" href="./fonts/material-icons.css">
-	<link rel="stylesheet" href="./css/style.css?v=0.00000004">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Garabatos</title>
+    <link rel="stylesheet" href="./css/bootstrap-4.3.1.css">
+    <link rel="stylesheet" href="./fonts/material-icons.css">
+    <link rel="stylesheet" href="./css/style.css?v=0.00000004">
 </head>
 
 <body class="not-logged">
 
-	<!-- Pagina de login -->
-	<div id="login-form-container" class="visible-when-not-logged">
-		<div id="login-form-wrapper">
-			<div id="login-form-header">
-				<div id="login-form-logo">
-					<img src="./img/garabatos-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-					<span>Garabatos</span>
-				</div>
-				<div id="login-form-title">
-					<h1>Iniciar sesión</h1>
-				</div>
-			</div>
-			<form id="login-form" method="post">
-				<div class="form-group">
-					<label for="login-form-user">Usuario</label>
-					<input type="text" class="form-control" id="login-form-user" value="j0vyeg">
-				</div>
-				<div class="form-group">
-					<label for="login-form-password">Contraseña</label>
-					<input type="password" class="form-control" id="login-form-password" value="mHFh9w">
-				</div>
-				
-				<button type="submit" class="btn btn-primary">Iniciar sesión</button> 
-			</form>
-		</div>
-	</div>
+    <!-- Pagina de login -->
+    <div id="login-form-container" class="visible-when-not-logged">
+        <div id="login-form-wrapper">
+            <div id="login-form-header">
+                <div id="login-form-logo">
+                    <img src="./img/garabatos-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                    <span>Garabatos</span>
+                </div>
+                <div id="login-form-title">
+                    <h1>Iniciar sesión</h1>
+                </div>
+            </div>
+            <form id="login-form" method="post">
+                <div class="form-group">
+                    <label for="login-form-user">Usuario</label>
+                    <input type="text" class="form-control" id="login-form-user" value="j0vyeg">
+                </div>
+                <div class="form-group">
+                    <label for="login-form-password">Contraseña</label>
+                    <input type="password" class="form-control" id="login-form-password" value="mHFh9w">
+                </div>
 
-	<div id="logged-page" class="visible-when-logged">
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
 
-		<!-- Cabecera y navegación -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav-mobile" aria-controls="main-nav-mobile" aria-expanded="false" aria-label="Toggle navigation">
+    <div id="logged-page" class="visible-when-logged">
+
+        <!-- Cabecera y navegación -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav-mobile" aria-controls="main-nav-mobile" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="collapse navbar-collapse" id="main-nav-mobile">
-				<a class="navbar-brand mb-0 h1" href="#">
-					<img src="./img/garabatos-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-					Garabatos
-				</a>
+            <div class="collapse navbar-collapse" id="main-nav-mobile">
+                <a class="navbar-brand mb-0 h1" href="#">
+                    <img src="./img/garabatos-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Garabatos
+                </a>
 
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="master-tab-nav">
-					<li class="nav-item active"><a class="nav-link" href="#" id="trigger-view-inbox">Mensajes</a></li>
-					<li class="nav-item"><a class="nav-link" href="#" id="trigger-view-classes">Clases</a></li>
-					<li class="nav-item"><a class="nav-link" href="#" id="trigger-view-users">Estudiantes y usuarios</a></li>
-				</ul>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="master-tab-nav">
+                    <li class="nav-item active"><a class="nav-link" href="#" id="trigger-view-inbox">Mensajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="trigger-view-classes">Clases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="trigger-view-users">Estudiantes y usuarios</a></li>
+                </ul>
 
-				<ul class="navbar-nav my-2 my-lg-0">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="logged-in-user-name" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[Nombre del usuario]</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="logged-in-user-name">
-							<a class="dropdown-item" href="#">Garabatos v3.1 (grupo 04)</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#" id="trigger-logout">Cerrar sesión</a>
-						</div>
-					</li>
-					
-				</ul>
-			</div>
-		</nav>
+                <ul class="navbar-nav my-2 my-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="logged-in-user-name" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[Nombre del usuario]</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="logged-in-user-name">
+                            <a class="dropdown-item" href="#">Garabatos v3.1 (grupo 04)</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" id="trigger-logout">Cerrar sesión</a>
+                        </div>
+                    </li>
 
-		<br>
+                </ul>
+            </div>
+        </nav>
 
-		<!-- view inbox -->
-		<div id="view-inbox">
-			<div class="container-fluid">
-				<div class="row">
-					<!-- left nav: filters -->
-					<div class="col-2">
-						<div>
-							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-open-compose"><i class="material-icons">add</i> Mensaje</button>
-						</div>
+        <br>
 
-						<br>
+        <!-- view inbox -->
+        <div id="view-inbox">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left nav: filters -->
+                    <div class="col-2">
+                        <div>
+                            <button type="button" class="btn btn-outline-primary btn-block text-left trigger-open-compose"><i class="material-icons">add</i> Mensaje</button>
+                        </div>
 
-						<div class="card">
-							<div class="card-header">
-								Filtrar
-							</div>
-							<ul class="list-group list-group-flush">
+                        <br>
 
-								<!-- filter: received/sent/all -->
-								<li class="list-group-item">
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="received" id="trigger-view-inbox-received-received" checked>
-										<label class="custom-control-label" for="trigger-view-inbox-received-received">Recibidos</label>
-									</div>
+                        <div class="card">
+                            <div class="card-header">
+                                Filtrar
+                            </div>
+                            <ul class="list-group list-group-flush">
 
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="sent" id="trigger-view-inbox-received-sent">
-										<label class="custom-control-label" for="trigger-view-inbox-received-sent">Enviados</label>
-									</div>
+                                <!-- filter: received/sent/all -->
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="received" id="trigger-view-inbox-received-received" checked>
+                                        <label class="custom-control-label" for="trigger-view-inbox-received-received">Recibidos</label>
+                                    </div>
 
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="all" id="trigger-view-inbox-received-all">
-										<label class="custom-control-label" for="trigger-view-inbox-received-all">Todos</label>
-									</div>
-								</li>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="sent" id="trigger-view-inbox-received-sent">
+                                        <label class="custom-control-label" for="trigger-view-inbox-received-sent">Enviados</label>
+                                    </div>
 
-								<!-- filter: archived/all -->
-								<li class="list-group-item">
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-archived" value="all" id="trigger-view-inbox-archived-all" checked>
-										<label class="custom-control-label" for="trigger-view-inbox-archived-all">Todos</label>
-									</div>
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-archived" value="archived" id="trigger-view-inbox-archived-archived">
-										<label class="custom-control-label" for="trigger-view-inbox-archived-archived">Archivados</label>
-									</div>
-								</li>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-received" value="all" id="trigger-view-inbox-received-all">
+                                        <label class="custom-control-label" for="trigger-view-inbox-received-all">Todos</label>
+                                    </div>
+                                </li>
 
-								<!-- filter: read/unread/all -->
-								<li class="list-group-item">
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="unread" id="trigger-view-inbox-read-unread" checked>
-										<label class="custom-control-label" for="trigger-view-inbox-read-unread">No leídos</label>
-									</div>
+                                <!-- filter: archived/all -->
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-archived" value="all" id="trigger-view-inbox-archived-all" checked>
+                                        <label class="custom-control-label" for="trigger-view-inbox-archived-all">Todos</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-archived" value="archived" id="trigger-view-inbox-archived-archived">
+                                        <label class="custom-control-label" for="trigger-view-inbox-archived-archived">Archivados</label>
+                                    </div>
+                                </li>
 
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="read" id="trigger-view-inbox-read-read">
-										<label class="custom-control-label" for="trigger-view-inbox-read-read">Leídos</label>
-									</div>
+                                <!-- filter: read/unread/all -->
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="unread" id="trigger-view-inbox-read-unread" checked>
+                                        <label class="custom-control-label" for="trigger-view-inbox-read-unread">No leídos</label>
+                                    </div>
 
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="all" id="trigger-view-inbox-read-all">
-										<label class="custom-control-label" for="trigger-view-inbox-read-all">Todos</label>
-									</div>
-								</li>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="read" id="trigger-view-inbox-read-read">
+                                        <label class="custom-control-label" for="trigger-view-inbox-read-read">Leídos</label>
+                                    </div>
 
-								<!-- filter: favs/all -->
-								<li class="list-group-item">
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-favs-" value="all" id="trigger-view-inbox-favs-all" checked>
-										<label class="custom-control-label" for="trigger-view-inbox-favs-all">Todos</label>
-									</div>
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-inbox-favs-" value="favs" id="trigger-view-inbox-favs-favs">
-										<label class="custom-control-label" for="trigger-view-inbox-favs-favs">Favoritos</label>
-									</div>
-								</li>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-read" value="all" id="trigger-view-inbox-read-all">
+                                        <label class="custom-control-label" for="trigger-view-inbox-read-all">Todos</label>
+                                    </div>
+                                </li>
 
-								<li class="list-group-item">
-									<button type="button" class="btn btn-secondary btn-sm">Borrar filtros</button>
-								</li>
+                                <!-- filter: favs/all -->
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-favs-" value="all" id="trigger-view-inbox-favs-all" checked>
+                                        <label class="custom-control-label" for="trigger-view-inbox-favs-all">Todos</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-inbox-favs-" value="favs" id="trigger-view-inbox-favs-favs">
+                                        <label class="custom-control-label" for="trigger-view-inbox-favs-favs">Favoritos</label>
+                                    </div>
+                                </li>
 
-							</ul>
-						</div>
-					</div>
+                                <li class="list-group-item">
+                                    <button type="button" class="btn btn-secondary btn-sm">Borrar filtros</button>
+                                </li>
 
-					<!-- left list: matching messages -->
-					<div class="col-4">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0">Mensajes</h5>
-							</div>
-							<div class="list-group list-group-flush" id="view-inbox-message-list">
-								<div class="list-group-item flex-column align-items-start"><div class="d-flex w-100 justify-content-between">No hay ningún mensaje</div></div>
-							</div>
-						</div>
-					</div>
+                            </ul>
+                        </div>
+                    </div>
 
-					<!-- right form: current -->
-					<div class="col">
-						<div id="view-inbox-right-panel">
+                    <!-- left list: matching messages -->
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Mensajes</h5>
+                            </div>
+                            <div class="list-group list-group-flush" id="view-inbox-message-list">
+                                <div class="list-group-item flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">No hay ningún mensaje</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-							<!-- default text -->
-							<div class="card" id="view-inbox-current-default">
-								<div class="card-body">
-									<p>Seleccione un mensaje para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-sm btn-outline-primary trigger-open-compose"><i class="material-icons">add</i> Mensaje</button> para redactar un nuevo mensaje y enviarlo.</p>
-								</div>
-							</div>
+                    <!-- right form: current -->
+                    <div class="col">
+                        <div id="view-inbox-right-panel">
 
-							<!-- current message -->
-							<div id="view-inbox-current-message">
-								<div class="card">
-									<div class="card-header">
-										<h3 id="current-message-title" class="card-title">Dapibus ac facilisis in</h3>
+                            <!-- default text -->
+                            <div class="card" id="view-inbox-current-default">
+                                <div class="card-body">
+                                    <p>Seleccione un mensaje para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-sm btn-outline-primary trigger-open-compose"><i class="material-icons">add</i> Mensaje</button> para redactar un
+                                        nuevo mensaje y enviarlo.</p>
+                                </div>
+                            </div>
 
-										<div id="current-message-info">
-											<p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Remitente">person</i> <span>Nombre del remitente</span></p>
-											<p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Destinatarios">mail</i> <span>Nombre de los destinatarios</span></p>
-											<p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Fecha">calendar_today</i> <span>19/11/2003 13:33</span></p>
-										</div>
+                            <!-- current message -->
+                            <div id="view-inbox-current-message">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 id="current-message-title" class="card-title">Dapibus ac facilisis in</h3>
 
-										<div id="current-message-actions" class="btn-group" role="group">
-											<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-archive" title="Archivar">
+                                        <div id="current-message-info">
+                                            <p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Remitente">person</i> <span>Nombre del remitente</span></p>
+                                            <p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Destinatarios">mail</i> <span>Nombre de los destinatarios</span></p>
+                                            <p><i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Fecha">calendar_today</i> <span>19/11/2003 13:33</span></p>
+                                        </div>
+
+                                        <div id="current-message-actions" class="btn-group" role="group">
+                                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-archive" title="Archivar">
 												<i class="material-icons">archive</i>
 											</button>
-											<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-delete" title="Eliminar">
+                                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-delete" title="Eliminar">
 												<i class="material-icons">delete</i>
 											</button>
-											<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-markunread" title="Marcar como no leído">
+                                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" id="trigger-current-message-markunread" title="Marcar como no leído">
 												<i class="material-icons">markunread</i>
 											</button>
-										</div>
-									</div>
-									<div class="card-body">
-										<p>Contenido del mensaje</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Contenido del mensaje</p>
 
-										<button type="button" class="btn btn-outline-secondary" id="trigger-current-message-reply">
+                                        <button type="button" class="btn btn-outline-secondary" id="trigger-current-message-reply">
 											<i class="material-icons">reply</i> Responder
 										</button>
-									</div>
-								</div>
-							</div>
+                                    </div>
+                                </div>
+                            </div>
 
-							<!-- current message reply -->
-							<div id="view-inbox-reply-box">
-								<br>
+                            <!-- current message reply -->
+                            <div id="view-inbox-reply-box">
+                                <br>
 
-								<div class="card">
-									<div class="card-header">
-										Responder a <strong>Dapibus ac facilisis in</strong>
-									</div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        Responder a <strong>Dapibus ac facilisis in</strong>
+                                    </div>
 
-									<div class="card-body">
-										<form>
-											<div class="form-group">
-												<label for="reply-form-body">Cuerpo del mensaje</label>
-												<textarea class="default-tinymce-editor" id="reply-form-body" class="form-control"></textarea>
-											</div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="reply-form-body">Cuerpo del mensaje</label>
+                                                <textarea class="default-tinymce-editor" id="reply-form-body" class="form-control"></textarea>
+                                            </div>
 
-											<div class="float-right">
-												<button type="button" id="trigger-current-message-reply-cancel" class="btn btn-outline-danger">Cancelar</button>
-												<button type="button" id="trigger-current-message-reply-send" class="btn btn-primary">Enviar</button>
-											</div>
+                                            <div class="float-right">
+                                                <button type="button" id="trigger-current-message-reply-cancel" class="btn btn-outline-danger">Cancelar</button>
+                                                <button type="button" id="trigger-current-message-reply-send" class="btn btn-primary">Enviar</button>
+                                            </div>
 
-											<div class="clearfix"></div>
-										</form>
-									</div>
-								</div>
-							</div>
+                                            <div class="clearfix"></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
-							<!-- compose -->
-							<div class="card" id="view-inbox-compose">
-								<div class="card-header">
-									<h3 class="card-title">Redactar nuevo mensaje</h3>
-								</div>
-								<div class="card-body">
-									<form>
-										<div class="form-group">
-											<label for="compose-form-from">Remitente</label>
-											<input type="text" class="form-control" id="compose-form-from" placeholder="Nombre del remitente" disabled>
-										</div>
+                            <!-- compose -->
+                            <div class="card" id="view-inbox-compose">
+                                <div class="card-header">
+                                    <h3 class="card-title">Redactar nuevo mensaje</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="compose-form-from">Remitente</label>
+                                            <input type="text" class="form-control" id="compose-form-from" placeholder="Nombre del remitente" disabled>
+                                        </div>
 
-										<div class="form-group">
-											<label for="compose-form-to">Destinatario</label>
-											<input type="text" class="form-control" id="compose-form-to" placeholder="Introduzca un destinatario para buscar (autocomplete)">
-										</div>
+                                        <div class="form-group">
+                                            <label for="compose-form-to">Destinatario</label>
+                                            <input type="text" class="form-control" id="compose-form-to" placeholder="Introduzca un destinatario para buscar (autocomplete)">
+                                        </div>
 
-										<div class="form-group">
-											<label for="compose-form-subject">Asunto</label>
-											<input type="text" class="form-control" id="compose-form-subject" placeholder="Asunto del mensaje">
-										</div>
+                                        <div class="form-group">
+                                            <label for="compose-form-subject">Asunto</label>
+                                            <input type="text" class="form-control" id="compose-form-subject" placeholder="Asunto del mensaje">
+                                        </div>
 
-										<div class="form-group">
-											<label for="compose-form-body">Cuerpo del mensaje</label>
-											<textarea class="default-tinymce-editor" id="compose-form-body" class="form-control"></textarea>
-										</div>
+                                        <div class="form-group">
+                                            <label for="compose-form-body">Cuerpo del mensaje</label>
+                                            <textarea class="default-tinymce-editor" id="compose-form-body" class="form-control"></textarea>
+                                        </div>
 
-										<div class="float-right">
-											<button type="button" id="trigger-compose-cancel" class="btn btn-outline-danger">Cancelar</button>
-											<button type="button" id="trigger-compose-send" class="btn btn-primary">Enviar</button>
-										</div>
+                                        <div class="float-right">
+                                            <button type="button" id="trigger-compose-cancel" class="btn btn-outline-danger">Cancelar</button>
+                                            <button type="button" id="trigger-compose-send" class="btn btn-primary">Enviar</button>
+                                        </div>
 
-										<div class="clearfix"></div>
-									</form>
-								</div>
-							</div>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<!-- classes view -->
-		<div id="view-classes">
-			
-			<!-- add class modal -->
-			<div class="modal fade" id="add-class-modal" tabindex="-1" role="dialog" aria-labelledby="add-class-modal-name" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form id="create-class-form">
-							<div class="modal-header">
-								<h5 class="modal-title" id="add-class-modal-name">Crear nueva clase</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- classes view -->
+        <div id="view-classes">
+
+            <!-- add class modal -->
+            <div class="modal fade" id="add-class-modal" tabindex="-1" role="dialog" aria-labelledby="add-class-modal-name" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="create-class-form">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="add-class-modal-name">Crear nueva clase</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<label for="create-class-form-name">Nombre</label>
-									<input type="text" class="form-control" id="create-class-form-name" placeholder="Nombre de la clase">
-								</div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="create-class-form-name">Nombre</label>
+                                    <input type="text" class="form-control" id="create-class-form-name" placeholder="Nombre de la clase" required>
+                                </div>
 
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-								<button type="submit" class="btn btn-primary">Guardar clase</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar clase</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-			<div class="container-fluid">
-				<div class="row">
-					<!-- left nav: filters -->
-					<div class="col-2">
-						<div>
-							<button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#add-class-modal"><i class="material-icons">add</i> Clase</button>
-						</div>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left nav: filters -->
+                    <div class="col-2">
+                        <div>
+                            <button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#add-class-modal"><i class="material-icons">add</i> Clase</button>
+                        </div>
 
-						<br>
+                        <br>
 
-						<div class="card">
-							<div class="card-header">
-								Todas mis clases
-							</div>
-							<ul class="list-group list-group-flush" id="view-classes-list"></ul>
-						</div>
-					</div>
+                        <div class="card">
+                            <div class="card-header">
+                                Todas mis clases
+                            </div>
+                            <ul class="list-group list-group-flush" id="view-classes-list"></ul>
+                        </div>
+                    </div>
 
-					<!-- left list: class members -->
-					<div class="col-4">
-						<div class="card" id="view-classes-members-list">
-							<div class="card-header">
-								<h5 class="mb-0">Miembros de <span id="current-class-name"></span></h5>
-							</div>
-							<ul class="list-group list-group-flush" id="current-class-student-list"></ul>
-						</div>
-					</div>
+                    <!-- left list: class members -->
+                    <div class="col-4">
+                        <div class="card" id="view-classes-members-list">
+                            <div class="card-header">
+                                <h5 class="mb-0">Miembros de <span id="current-class-name"></span></h5>
+                            </div>
+                            <ul class="list-group list-group-flush" id="current-class-student-list"></ul>
+                        </div>
+                    </div>
 
-					<!-- right form: current -->
-					<div class="col">
-						<div id="view-classes-right-panel">
+                    <!-- right form: current -->
+                    <div class="col">
+                        <div id="view-classes-right-panel">
 
-							<!-- default text -->
-							<div class="card" id="view-classes-current-default">
-								<div class="card-body">
-									<p>Seleccione una clase para verla y gestionarla aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm"  data-toggle="modal" data-target="#add-class-modal"><i class="material-icons">add</i> Clase</button> para crear una nueva clase.</p>
-								</div>
-							</div>
+                            <!-- default text -->
+                            <div class="card" id="view-classes-current-default">
+                                <div class="card-body">
+                                    <p>Seleccione una clase para verla y gestionarla aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#add-class-modal"><i class="material-icons">add</i> Clase</button>                                        para crear una nueva clase.</p>
+                                </div>
+                            </div>
 
-							<!-- create/view/edit student -->
-							<div class="card" id="view-classes-current-class">
-								<div class="card-header">
-									<h3 class="card-title">Ver clase</h3>
-								</div>
+                            <!-- create/view/edit student -->
+                            <div class="card" id="view-classes-current-class">
+                                <div class="card-header">
+                                    <h3 class="card-title">Ver clase</h3>
+                                </div>
 
-								<div class="card-body">
-									<form id="edit-class-form">
-										<div class="form-group">
-											<label for="edit-class-form-name">Nombre</label>
-											<input type="text" class="form-control" id="edit-class-form-name" placeholder="Nombre de la clase" disabled>
-										</div>
-									</form>
-								</div>
-							</div>
+                                <div class="card-body">
+                                    <form id="edit-class-form">
+                                        <div class="form-group">
+                                            <label for="edit-class-form-name">Nombre</label>
+                                            <input type="text" class="form-control" id="edit-class-form-name" placeholder="Nombre de la clase" disabled>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<!-- users view -->
-		<div id="view-users">
+        <!-- users view -->
+        <div id="view-users">
 
-			<!-- create student modal -->
-			<div class="modal fade" id="create-student-modal" tabindex="-1" role="dialog" aria-labelledby="create-student-modal-name" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form id="create-student-form">
-							<div class="modal-header">
-								<h5 class="modal-title" id="create-student-modal-name">Crear nuevo estudiante</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <!-- create student modal -->
+            <div class="modal fade" id="create-student-modal" tabindex="-1" role="dialog" aria-labelledby="create-student-modal-name" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="create-student-form">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="create-student-modal-name">Crear nuevo estudiante</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<label for="create-student-form-sid">Identificador</label>
-									<input type="text" class="form-control" id="create-student-form-sid" placeholder="Identificador del estudiante">
-								</div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="create-student-form-sid">Identificador</label>
+                                    <input type="text" class="form-control" id="create-student-form-sid" placeholder="Identificador del estudiante" required>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-student-form-firstname">Nombre</label>
-									<input type="text" class="form-control" id="create-student-form-firstname" placeholder="Nombre del estudiante">
-								</div>
+                                <div class="form-group">
+                                    <label for="create-student-form-firstname">Nombre</label>
+                                    <input type="text" class="form-control" id="create-student-form-firstname" placeholder="Nombre del estudiante" required>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-student-form-lastname">Apellidos</label>
-									<input type="text" class="form-control" id="create-student-form-lastname" placeholder="Apellidos del estudiante">
-								</div>
+                                <div class="form-group">
+                                    <label for="create-student-form-lastname">Apellidos</label>
+                                    <input type="text" class="form-control" id="create-student-form-lastname" placeholder="Apellidos del estudiante" required>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-student-form-cid">Clase</label>
-									<select class="form-control" id="create-student-form-cid"></select>
-								</div>
+                                <div class="form-group">
+                                    <label for="create-student-form-cid">Clase</label>
+                                    <select class="form-control" id="create-student-form-cid" required></select>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-student-form-guardian">Identificador del responsable</label>
-									<input type="text" class="form-control" id="create-student-form-guardian" placeholder="Identificador del responsable del estudiante" aria-describedby="create-student-form-guardian-hint">
-									<small id="create-student-form-guardian-hint" class="form-text text-muted">
+                                <div class="form-group">
+                                    <label for="create-student-form-guardian">Identificador del responsable</label>
+                                    <input type="text" class="form-control" id="create-student-form-guardian" placeholder="Identificador del responsable del estudiante" aria-describedby="create-student-form-guardian-hint">
+                                    <small id="create-student-form-guardian-hint" class="form-text text-muted">
 										Puedes añadir varios identificadores separados por comas.
 									</small>
-								</div>
+                                </div>
 
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-								<button type="submit" class="btn btn-primary">Guardar estudiante</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar estudiante</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-			<!-- create generic user modal -->
-			<div class="modal fade" id="create-generic-user-modal" tabindex="-1" role="dialog" aria-labelledby="create-generic-user-modal-name" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form id="create-generic-user-form">
-							<div class="modal-header">
-								<h5 class="modal-title" id="create-generic-user-modal-name">Crear nuevo usuario</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <!-- create generic user modal -->
+            <div class="modal fade" id="create-generic-user-modal" tabindex="-1" role="dialog" aria-labelledby="create-generic-user-modal-name" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="create-generic-user-form">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="create-generic-user-modal-name">Crear nuevo usuario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<label for="create-generic-user-form-uid">Identificador</label>
-									<input type="text" class="form-control" id="create-generic-user-form-uid" placeholder="Identificador del usuario">
-								</div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-uid">Identificador</label>
+                                    <input type="text" class="form-control" id="create-generic-user-form-uid" placeholder="Identificador del usuario" required>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-generic-user-form-type">Tipo</label>
-									<select class="form-control" id="create-generic-user-form-type">
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-type">Tipo</label>
+                                    <select class="form-control" id="create-generic-user-form-type" required>
 										<option value="teacher">Profesor</option>
 										<option value="guardian">Responsable</option>
 										<option value="admin">Administrador</option>
 									</select>
-								</div>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-generic-user-form-firstname">Nombre</label>
-									<input type="text" class="form-control" id="create-generic-user-form-firstname" placeholder="Nombre del usuario">
-								</div>
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-firstname">Nombre</label>
+                                    <input type="text" class="form-control" id="create-generic-user-form-firstname" placeholder="Nombre del usuario" required>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-generic-user-form-lastname">Apellidos</label>
-									<input type="text" class="form-control" id="create-generic-user-form-lastname" placeholder="Apellidos del usuario">
-								</div>
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-lastname">Apellidos</label>
+                                    <input type="text" class="form-control" id="create-generic-user-form-lastname" placeholder="Apellidos del usuario">
+                                </div>
 
-								<div class="form-group">
-									<label for="create-generic-user-form-phones">Teléfono</label>
-									<input type="text" class="form-control" id="create-generic-user-form-phones" placeholder="Número(s) de teléfono del usuario" aria-describedby="create-generic-user-form-phones-hint">
-									<small id="create-generic-user-form-phones-hint" class="form-text text-muted">
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-phones">Teléfono</label>
+                                    <input type="text" class="form-control" id="create-generic-user-form-phones" placeholder="Número(s) de teléfono del usuario" aria-describedby="create-generic-user-form-phones-hint">
+                                    <small id="create-generic-user-form-phones-hint" class="form-text text-muted">
 										Puedes añadir varios números de teléfono separados por comas.
 									</small>
-								</div>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-generic-user-form-cids">Clase</label>
-									<select multiple class="form-control" id="create-generic-user-form-cids" aria-describedby="create-generic-user-form-cids-hint"></select>
-									<small id="create-generic-user-form-cids-hint" class="form-text text-muted">
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-cids">Clase</label>
+                                    <select multiple class="form-control" id="create-generic-user-form-cids" aria-describedby="create-generic-user-form-cids-hint" required></select>
+                                    <small id="create-generic-user-form-cids-hint" class="form-text text-muted">
 										Puedes seleccionar varias clases.
 									</small>
-								</div>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-generic-user-form-students">Estudiantes</label>
-									<input type="text" class="form-control" id="create-generic-user-form-students" placeholder="Estudiantes" aria-describedby="create-generic-user-form-students-hint">
-									<small id="create-generic-user-form-students-hint" class="form-text text-muted">
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-students">Estudiantes</label>
+                                    <input type="text" class="form-control" id="create-generic-user-form-students" placeholder="Estudiantes" aria-describedby="create-generic-user-form-students-hint">
+                                    <small id="create-generic-user-form-students-hint" class="form-text text-muted">
 										Puedes añadir varios identificadores separados por comas.
 									</small>
-								</div>
+                                </div>
 
-								<div class="form-group">
-									<label for="create-generic-user-form-password">Contraseña</label>
-									<input type="password" class="form-control" id="create-generic-user-form-password" placeholder="Contraseña del usuario">
-								</div>
+                                <div class="form-group">
+                                    <label for="create-generic-user-form-password">Contraseña</label>
+                                    <input type="password" class="form-control" id="create-generic-user-form-password" placeholder="Contraseña del usuario" required>
+                                </div>
 
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-								<button type="submit" class="btn btn-primary">Guardar usuario</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar usuario</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-			<div class="container-fluid">
-				<div class="row">
-					<!-- left nav: filters -->
-					<div class="col-2">
-						<div>
-							<button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#create-student-modal"><i class="material-icons">add</i> Estudiante</button>
-							<button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#create-generic-user-modal"><i class="material-icons">add</i> Usuario</button>
-						</div>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left nav: filters -->
+                    <div class="col-2">
+                        <div>
+                            <button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#create-student-modal"><i class="material-icons">add</i> Estudiante</button>
+                            <button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#create-generic-user-modal"><i class="material-icons">add</i> Usuario</button>
+                        </div>
 
-						<br>
+                        <br>
 
-						<div class="card">
-							<div class="card-header">
-								Filtrar
-							</div>
-							<ul class="list-group list-group-flush">
+                        <div class="card">
+                            <div class="card-header">
+                                Filtrar
+                            </div>
+                            <ul class="list-group list-group-flush">
 
-								<li class="list-group-item">
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="all" id="trigger-view-users-type-all" disabled>
-										<label class="custom-control-label" for="trigger-view-users-type-all">Todos</label>
-									</div>
+                                <li class="list-group-item">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-users-type" value="all" id="trigger-view-users-type-all" disabled>
+                                        <label class="custom-control-label" for="trigger-view-users-type-all">Todos</label>
+                                    </div>
 
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="students" id="trigger-view-users-type-students" disabled>
-										<label class="custom-control-label" for="trigger-view-users-type-students">Estudiantes</label>
-									</div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-users-type" value="students" id="trigger-view-users-type-students" disabled>
+                                        <label class="custom-control-label" for="trigger-view-users-type-students">Estudiantes</label>
+                                    </div>
 
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="guardians" id="trigger-view-users-type-guardians" disabled>
-										<label class="custom-control-label" for="trigger-view-users-type-guardians">Responsables</label>
-									</div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-users-type" value="guardians" id="trigger-view-users-type-guardians" disabled>
+                                        <label class="custom-control-label" for="trigger-view-users-type-guardians">Responsables</label>
+                                    </div>
 
-									<div class="custom-control custom-radio">
-										<input type="radio" class="custom-control-input" name="trigger-view-users-type" value="teachers" id="trigger-view-users-type-teachers" disabled>
-										<label class="custom-control-label" for="trigger-view-users-type-teachers">Profesores</label>
-									</div>
-								</li>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="trigger-view-users-type" value="teachers" id="trigger-view-users-type-teachers" disabled>
+                                        <label class="custom-control-label" for="trigger-view-users-type-teachers">Profesores</label>
+                                    </div>
+                                </li>
 
-							</ul>
-						</div>
-					</div>
+                            </ul>
+                        </div>
+                    </div>
 
-					<!-- left list: matching messages -->
-					<div class="col-4">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0" id="current-user-type-title">Todos los estudiantes y usuarios</h5>
-							</div>
-							<div class="list-group list-group-flush visible-user-type-student visible-user-type-guardian visible-user-type-teacher" id="view-users-list">
-								<div class="list-group-item flex-column align-items-start"><div class="d-flex w-100 justify-content-between">No hay ningún usuario</div></div>
-							</div>
-						</div>
-					</div>
+                    <!-- left list: matching messages -->
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0" id="current-user-type-title">Todos los estudiantes y usuarios</h5>
+                            </div>
+                            <div class="list-group list-group-flush visible-user-type-student visible-user-type-guardian visible-user-type-teacher" id="view-users-list">
+                                <div class="list-group-item flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">No hay ningún usuario</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-					<!-- right form: current -->
-					<div class="col">
-						<div id="view-users-right-panel">
+                    <!-- right form: current -->
+                    <div class="col">
+                        <div id="view-users-right-panel">
 
-							<!-- default text -->
-							<div class="card" id="view-users-current-default">
-								<div class="card-body">
-									<p>Seleccione un estudiante o usuario para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create-student-modal"><i class="material-icons">add</i> Estudiante</button> <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create-generic-user-modal"><i class="material-icons">add</i> Usuario</button> para crear uno nuevo.</p>
-								</div>
-							</div>
+                            <!-- default text -->
+                            <div class="card" id="view-users-current-default">
+                                <div class="card-body">
+                                    <p>Seleccione un estudiante o usuario para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create-student-modal"><i class="material-icons">add</i> Estudiante</button>                                        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create-generic-user-modal"><i class="material-icons">add</i> Usuario</button> para crear uno nuevo.</p>
+                                </div>
+                            </div>
 
-							<!-- create/view/edit student -->
-							<div class="card" id="view-users-current-student">
-								<div class="card-header">
-									<h3 class="card-title">Crear/ver/editar estudiante</h3>
-								</div>
+                            <!-- create/view/edit student -->
+                            <div class="card" id="view-users-current-student">
+                                <div class="card-header">
+                                    <h3 class="card-title">Crear/ver/editar estudiante</h3>
+                                </div>
 
-								<div class="card-body">
-									<p>sid</p>
-									<p>first_name</p>
-									<p>last_name</p>
-									<p>cid</p>
-									<p>guardians</p>
-								</div>
-							</div>
+                                <div class="card-body">
+                                    <p>sid</p>
+                                    <p>first_name</p>
+                                    <p>last_name</p>
+                                    <p>cid</p>
+                                    <p>guardians</p>
+                                </div>
+                            </div>
 
-							<!-- create/view/edit guardian -->
-							<div class="card" id="view-users-current-guardian">
-								<div class="card-header">
-									<h3 class="card-title">Crear/ver/editar responsable</h3>
-								</div>
+                            <!-- create/view/edit guardian -->
+                            <div class="card" id="view-users-current-guardian">
+                                <div class="card-header">
+                                    <h3 class="card-title">Crear/ver/editar responsable</h3>
+                                </div>
 
-								<div class="card-body">
-									<p>uid</p>
-									<p>type (guardian)</p>
-									<p>first_name</p>
-									<p>last_name</p>
-									<p>tels</p>
-									<p>classes</p>
-									<p>students</p>
-									<p>pass</p>
-								</div>
-							</div>
+                                <div class="card-body">
+                                    <p>uid</p>
+                                    <p>type (guardian)</p>
+                                    <p>first_name</p>
+                                    <p>last_name</p>
+                                    <p>tels</p>
+                                    <p>classes</p>
+                                    <p>students</p>
+                                    <p>pass</p>
+                                </div>
+                            </div>
 
-							<!-- create/view/edit teacher -->
-							<div class="card" id="view-users-current-teacher">
-								<div class="card-header">
-									<h3 class="card-title">Crear/ver/editar profesor</h3>
-								</div>
+                            <!-- create/view/edit teacher -->
+                            <div class="card" id="view-users-current-teacher">
+                                <div class="card-header">
+                                    <h3 class="card-title">Crear/ver/editar profesor</h3>
+                                </div>
 
-								<div class="card-body">
-									<p>uid</p>
-									<p>type (teacher)</p>
-									<p>first_name</p>
-									<p>last_name</p>
-									<p>tels</p>
-									<p>classes</p>
-									<p>students</p>
-									<p>pass</p>
-								</div>
-							</div>
+                                <div class="card-body">
+                                    <p>uid</p>
+                                    <p>type (teacher)</p>
+                                    <p>first_name</p>
+                                    <p>last_name</p>
+                                    <p>tels</p>
+                                    <p>classes</p>
+                                    <p>students</p>
+                                    <p>pass</p>
+                                </div>
+                            </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 
-	<br>
+    <br>
 
-	<script src="js/jquery-3.3.1.js"></script>
-	<script src="js/bootstrap.bundle-4.3.1.js"></script>
-	<script src="js/tinymce.min.js"></script>
-	<script src="js/gb.js" type="module"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.bundle-4.3.1.js"></script>
+    <script src="js/tinymce.min.js"></script>
+    <script src="js/gb.js" type="module"></script>
 </body>
 
 </html>
