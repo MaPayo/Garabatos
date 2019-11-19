@@ -55,8 +55,7 @@
  */
 
 #view-inbox-current-message,
-#view-inbox-reply-box,
-#view-inbox-compose {
+#view-inbox-reply-box {
 	display: none;
 }
 
@@ -68,8 +67,7 @@
 }
 
 #view-inbox-right-panel.visible-current-message #view-inbox-current-message,
-#view-inbox-right-panel.visible-reply-box #view-inbox-reply-box,
-#view-inbox-right-panel.visible-compose #view-inbox-compose {
+#view-inbox-right-panel.visible-reply-box #view-inbox-reply-box {
 	display: block;
 }
 
@@ -90,12 +88,14 @@
 
 .user-type-student,
 .user-type-guardian,
+.user-type-admin,
 .user-type-teacher {
 	display: none;
 }
 
 .visible-user-type-student .user-type-student,
 .visible-user-type-guardian .user-type-guardian,
+.visible-user-type-admin .user-type-admin,
 .visible-user-type-teacher .user-type-teacher {
 	display: block;
 }
@@ -105,22 +105,19 @@
  */
 
 #view-users-current-student,
-#view-users-current-guardian,
-#view-users-current-teacher {
+#view-users-current-generic-user {
 	display: none;
 }
 
 /* Hide default text if current message or compose are open */
 
 #view-users-right-panel.visible-users-current-student #view-users-current-default,
-#view-users-right-panel.visible-users-current-guardian #view-users-current-default,
-#view-users-right-panel.visible-users-current-teacher #view-users-current-default {
+#view-users-right-panel.visible-users-current-generic-user #view-users-current-default {
 	display: none;
 }
 
 #view-users-right-panel.visible-users-current-student #view-users-current-student,
-#view-users-right-panel.visible-users-current-guardian #view-users-current-guardian,
-#view-users-right-panel.visible-users-current-teacher #view-users-current-teacher {
+#view-users-right-panel.visible-users-current-generic-user #view-users-current-generic-user {
 	display: block;
 }
 
