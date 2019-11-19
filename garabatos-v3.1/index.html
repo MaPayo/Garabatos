@@ -26,12 +26,12 @@
 			</div>
 			<form id="login-form" method="post">
 				<div class="form-group">
-					<label for="compose-form-from">Usuario</label>
-					<input type="text" class="form-control" name="login_form_user" id="login_form_user" value="eQd3cA">
+					<label for="login-form-user">Usuario</label>
+					<input type="text" class="form-control" id="login-form-user" value="j0vyeg">
 				</div>
 				<div class="form-group">
-					<label for="compose-form-from">Contraseña</label>
-					<input type="password" class="form-control" name="login_form_password" id="login_form_password" value="EOvp6Q">
+					<label for="login-form-password">Contraseña</label>
+					<input type="password" class="form-control" id="login-form-password" value="mHFh9w">
 				</div>
 				
 				<button type="submit" class="btn btn-primary">Iniciar sesión</button> 
@@ -56,7 +56,7 @@
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="master-tab-nav">
 					<li class="nav-item active"><a class="nav-link" href="#" id="trigger-view-inbox">Mensajes</a></li>
 					<li class="nav-item"><a class="nav-link" href="#" id="trigger-view-classes">Clases</a></li>
-					<li class="nav-item"><a class="nav-link" href="#" id="trigger-view-users">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="#" id="trigger-view-users">Estudiantes y usuarios</a></li>
 				</ul>
 
 				<ul class="navbar-nav my-2 my-lg-0">
@@ -290,13 +290,40 @@
 
 		<!-- classes view -->
 		<div id="view-classes">
+			
+			<!-- add class modal -->
+			<div class="modal fade" id="add-class-modal" tabindex="-1" role="dialog" aria-labelledby="add-class-modal-name" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="create-class-form">
+							<div class="modal-header">
+								<h5 class="modal-title" id="add-class-modal-name">Crear nueva clase</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="create-class-form-name">Nombre</label>
+									<input type="text" class="form-control" id="create-class-form-name" placeholder="Nombre de la clase">
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-primary">Guardar clase</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 
 			<div class="container-fluid">
 				<div class="row">
 					<!-- left nav: filters -->
 					<div class="col-2">
 						<div>
-							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-class"><i class="material-icons">add</i> Clase</button>
+							<button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#add-class-modal"><i class="material-icons">add</i> Clase</button>
 						</div>
 
 						<br>
@@ -313,11 +340,9 @@
 					<div class="col-4">
 						<div class="card" id="view-classes-members-list">
 							<div class="card-header">
-								<h5 class="mb-0">Miembros de <span id="current-class-name">[nombre de una clase]</span></h5>
+								<h5 class="mb-0">Miembros de <span id="current-class-name"></span></h5>
 							</div>
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item" data-class-id=""><label><input type="checkbox" name=""> [Nombre de un estudiante]</label></li>
-							</ul>
+							<ul class="list-group list-group-flush" id="current-class-student-list"></ul>
 						</div>
 					</div>
 
@@ -328,22 +353,23 @@
 							<!-- default text -->
 							<div class="card" id="view-classes-current-default">
 								<div class="card-body">
-									<p>Seleccione una clase para verla y gestionarla aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm trigger-create-class"><i class="material-icons">add</i> Clase</button> para crear una nueva clase.</p>
+									<p>Seleccione una clase para verla y gestionarla aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm"  data-toggle="modal" data-target="#add-class-modal"><i class="material-icons">add</i> Clase</button> para crear una nueva clase.</p>
 								</div>
 							</div>
 
 							<!-- create/view/edit student -->
 							<div class="card" id="view-classes-current-class">
 								<div class="card-header">
-									<h3 class="card-title">Crear/ver/editar clase</h3>
+									<h3 class="card-title">Ver clase</h3>
 								</div>
 
 								<div class="card-body">
-									
-									Formulario de creación, vista y edición a la derecha
-										- Editar datos
-										- Editar componentes
-										- Mandar mensaje a toda la clase
+									<form id="edit-class-form">
+										<div class="form-group">
+											<label for="edit-class-form-name">Nombre</label>
+											<input type="text" class="form-control" id="edit-class-form-name" placeholder="Nombre de la clase" disabled>
+										</div>
+									</form>
 								</div>
 							</div>
 
@@ -356,14 +382,138 @@
 		<!-- users view -->
 		<div id="view-users">
 
+			<!-- create student modal -->
+			<div class="modal fade" id="create-student-modal" tabindex="-1" role="dialog" aria-labelledby="create-student-modal-name" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="create-student-form">
+							<div class="modal-header">
+								<h5 class="modal-title" id="create-student-modal-name">Crear nuevo estudiante</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="create-student-form-sid">Identificador</label>
+									<input type="text" class="form-control" id="create-student-form-sid" placeholder="Identificador del estudiante">
+								</div>
+
+								<div class="form-group">
+									<label for="create-student-form-firstname">Nombre</label>
+									<input type="text" class="form-control" id="create-student-form-firstname" placeholder="Nombre del estudiante">
+								</div>
+
+								<div class="form-group">
+									<label for="create-student-form-lastname">Apellidos</label>
+									<input type="text" class="form-control" id="create-student-form-lastname" placeholder="Apellidos del estudiante">
+								</div>
+
+								<div class="form-group">
+									<label for="create-student-form-cid">Clase</label>
+									<select class="form-control" id="create-student-form-cid"></select>
+								</div>
+
+								<div class="form-group">
+									<label for="create-student-form-guardian">Identificador del responsable</label>
+									<input type="text" class="form-control" id="create-student-form-guardian" placeholder="Identificador del responsable del estudiante" aria-describedby="create-student-form-guardian-hint">
+									<small id="create-student-form-guardian-hint" class="form-text text-muted">
+										Puedes añadir varios identificadores separados por comas.
+									</small>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-primary">Guardar estudiante</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- create generic user modal -->
+			<div class="modal fade" id="create-generic-user-modal" tabindex="-1" role="dialog" aria-labelledby="create-generic-user-modal-name" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="create-generic-user-form">
+							<div class="modal-header">
+								<h5 class="modal-title" id="create-generic-user-modal-name">Crear nuevo usuario</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="create-generic-user-form-uid">Identificador</label>
+									<input type="text" class="form-control" id="create-generic-user-form-uid" placeholder="Identificador del usuario">
+								</div>
+
+								<div class="form-group">
+									<label for="create-generic-user-form-type">Tipo</label>
+									<select class="form-control" id="create-generic-user-form-type">
+										<option value="teacher">Profesor</option>
+										<option value="guardian">Responsable</option>
+										<option value="admin">Administrador</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="create-generic-user-form-firstname">Nombre</label>
+									<input type="text" class="form-control" id="create-generic-user-form-firstname" placeholder="Nombre del usuario">
+								</div>
+
+								<div class="form-group">
+									<label for="create-generic-user-form-lastname">Apellidos</label>
+									<input type="text" class="form-control" id="create-generic-user-form-lastname" placeholder="Apellidos del usuario">
+								</div>
+
+								<div class="form-group">
+									<label for="create-generic-user-form-phones">Teléfono</label>
+									<input type="text" class="form-control" id="create-generic-user-form-phones" placeholder="Número(s) de teléfono del usuario" aria-describedby="create-generic-user-form-phones-hint">
+									<small id="create-generic-user-form-phones-hint" class="form-text text-muted">
+										Puedes añadir varios números de teléfono separados por comas.
+									</small>
+								</div>
+
+								<div class="form-group">
+									<label for="create-generic-user-form-cids">Clase</label>
+									<select multiple class="form-control" id="create-generic-user-form-cids" aria-describedby="create-generic-user-form-cids-hint"></select>
+									<small id="create-generic-user-form-cids-hint" class="form-text text-muted">
+										Puedes seleccionar varias clases.
+									</small>
+								</div>
+
+								<div class="form-group">
+									<label for="create-generic-user-form-students">Estudiantes</label>
+									<input type="text" class="form-control" id="create-generic-user-form-students" placeholder="Estudiantes" aria-describedby="create-generic-user-form-students-hint">
+									<small id="create-generic-user-form-students-hint" class="form-text text-muted">
+										Puedes añadir varios identificadores separados por comas.
+									</small>
+								</div>
+
+								<div class="form-group">
+									<label for="create-generic-user-form-password">Contraseña</label>
+									<input type="password" class="form-control" id="create-generic-user-form-password" placeholder="Contraseña del usuario">
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-primary">Guardar usuario</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
 			<div class="container-fluid">
 				<div class="row">
 					<!-- left nav: filters -->
 					<div class="col-2">
 						<div>
-							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-student"><i class="material-icons">add</i> Estudiante</button>
-							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-guardian"><i class="material-icons">add</i> Responsable</button>
-							<button type="button" class="btn btn-outline-primary btn-block text-left trigger-create-teacher"><i class="material-icons">add</i> Profesor</button>
+							<button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#create-student-modal"><i class="material-icons">add</i> Estudiante</button>
+							<button type="button" class="btn btn-outline-primary btn-block text-left" data-toggle="modal" data-target="#create-generic-user-modal"><i class="material-icons">add</i> Usuario</button>
 						</div>
 
 						<br>
@@ -404,7 +554,7 @@
 					<div class="col-4">
 						<div class="card">
 							<div class="card-header">
-								<h5 class="mb-0" id="current-user-type-title">Todos los usuarios</h5>
+								<h5 class="mb-0" id="current-user-type-title">Todos los estudiantes y usuarios</h5>
 							</div>
 							<div class="list-group list-group-flush visible-user-type-student visible-user-type-guardian visible-user-type-teacher" id="view-users-list">
 								<div class="list-group-item flex-column align-items-start"><div class="d-flex w-100 justify-content-between">No hay ningún usuario</div></div>
@@ -419,7 +569,7 @@
 							<!-- default text -->
 							<div class="card" id="view-users-current-default">
 								<div class="card-body">
-									<p>Seleccione un usuario para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm trigger-create-student"><i class="material-icons">add</i> Estudiante</button> <button type="button" class="btn btn-outline-primary btn-sm trigger-create-guardian"><i class="material-icons">add</i> Responsable</button> <button type="button" class="btn btn-outline-primary btn-sm trigger-create-teacher"><i class="material-icons">add</i> Profesor</button> para crear uno nuevo.</p>
+									<p>Seleccione un estudiante o usuario para verlo y gestionarlo aquí o haga clic en <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create-student-modal"><i class="material-icons">add</i> Estudiante</button> <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#create-generic-user-modal"><i class="material-icons">add</i> Usuario</button> para crear uno nuevo.</p>
 								</div>
 							</div>
 

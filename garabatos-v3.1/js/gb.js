@@ -17,22 +17,20 @@ function handleLoginFormSubmit() {
 	$("#login-form").on("submit", event => {
 		event.preventDefault();
 
-		let user = $("#login_form_user").val();
-		let password = $("#login_form_password").val();
+		let user = $("#login-form-user").val();
+		let password = $("#login-form-password").val();
 
-		Gb.connect("http://gin.fdi.ucm.es:8080/api/");	
+		Gb.connect("http://mur.juancarrion.xyz:8080/api/");	
 
 		Gb.login(user, password).then(d => {
-			let u = Gb.resolve(user);
+			if (d !== undefined) {
+				const u = Gb.resolve(user);
 
-			if (u !== undefined) {
 				console.log("Logged successfully");
 
 				handleSuccessfulLogin(u);
 			} else {
 				console.log("Login error");
-
-
 			}
 		});
 	});
@@ -246,16 +244,78 @@ function rebootClassList() {
 }
 
 /**
- * Manejar clic en una clase de la lista
+ * Manejar acciones de la lista de clases
  */
 function handleClassListActions() {
-	$("#view-classes-list").on("click", ".trigger-current-class", () => {
-		/* Update currently active message */
-		$(".trigger-current-class.active").removeClass("active");
-		$(this).addClass("active");
+	/**
+	 * Manejar un clic en una clase de la lista
+	 */
+	$("#view-classes-list").on("click", ".trigger-current-class", event => {
+		let claseEnLista = $(event.currentTarget);
+		let claseNombre = claseEnLista.data("class-id");
 
+		/* Actualizar clase actual en la lista de clases */
+		$(".trigger-current-class.active").removeClass("active");
+		claseEnLista.addClass("active");
+
+		/* Actualizar la lista de miembros de la clase */
+		$("#current-class-name").text(claseNombre);
+		$("#current-class-student-list").empty();
+
+		var anyStudent = false;
+
+		Gb.globalState.students.forEach(student => {
+			if (student.cid == claseNombre) {
+				anyStudent = true;
+
+				let html = '<li class="list-group-item">' + student.firstName + ' ' + student.lastName + '</li>';
+				$("#current-class-student-list").append(html);
+			}
+		});
+
+		if (! anyStudent) {
+			let html = '<li class="list-group-item">No hay ningún estudiante en esta clase</li>';
+			$("#current-class-student-list").empty().append(html);
+		}
+
+		/* Actualizar panel derecho */
+		$("#edit-class-form-name").val(claseNombre);
 		$("#view-classes-right-panel").addClass("visible-classes-current-class");
 		$("#view-classes-members-list").show();
+	});
+}
+
+/**
+ * Manejar acciones de creación de clases
+ */
+function handleClassCreateActions() {
+	$("#add-class-modal").on("show.bs.modal", function (event) {
+		$("#create-class-form-name").val("");
+	});
+
+	$("#create-class-form").on("submit", function (event) {
+		event.preventDefault();
+
+		let claseNombre = $("#create-class-form-name").val();
+
+		/* TODO: Validar el nombre por el lado del cliente */
+		/* Cuidado, el servidor admite nombres vacíos y no debería */
+		if (true) {
+			Gb.addClass({cid: claseNombre}).then(d => {
+				if (d !== undefined) {
+					$("#add-class-modal").modal("hide");
+
+					rebootClassList();
+
+					let alerta = '<div class="alert alert-success alert-dismissible fade show" role="alert">Clase creada correctamente.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+					$("#view-classes-right-panel").prepend(alerta)
+					$('.alert').alert();
+				} else {
+					/* TODO: Validar el nombre por el lado del servidor, avisar si algo va mal */
+					console.log("Hubo un error al añadir la clase " + claseNombre);
+				}
+			});
+		}
 	});
 }
 
@@ -277,10 +337,10 @@ function rebootUserList() {
 	$("#trigger-view-users-type-students").attr("disabled", true);
 	$("#trigger-view-users-type-guardians").attr("disabled", true);
 	$("#trigger-view-users-type-teachers").attr("disabled", true);
-	$("#current-user-type-title").text("Todos los usuarios");
+	$("#current-user-type-title").text("Todos los estudiantes y usuarios");
 
 	if (Gb.globalState.students.length > 0 || Gb.globalState.users.length > 0) {
-		$("#trigger-view-users-type-all").attr("disabled", false);
+		$("#trigger-view-users-type-all").attr("disabled", false).prop("checked", true);
 		
 		Gb.globalState.students.forEach(student => {
 			$("#trigger-view-users-type-students").attr("disabled", false);
@@ -291,7 +351,7 @@ function rebootUserList() {
 		});
 
 		Gb.globalState.users.forEach(user => {
-			if (user.classes.length && ! user.students.length) {
+			if (user.type == "teacher") {
 				$("#trigger-view-users-type-teachers").attr("disabled", false);
 
 				let html = '<a href="#" class="list-group-item list-group-item-action trigger-current-user user-type-teacher" data-user-type="teacher" data-user-id="' + user.uid + '">' + user.first_name + ' ' + user.last_name + '</a>';
@@ -324,7 +384,7 @@ function handleUsersFilter() {
 		let tipoVisible = $(event.currentTarget).val();
 
 		if (tipoVisible == "all") {
-			$("#current-user-type-title").text("Todos los usuarios");
+			$("#current-user-type-title").text("Todos los estudiantes y usuarios");
 			lista.addClass("visible-user-type-student visible-user-type-guardian visible-user-type-teacher");
 		} else if (tipoVisible == "students") {
 			$("#current-user-type-title").text("Estudiantes");
@@ -365,6 +425,117 @@ function handleUsersListClick() {
 }
 
 /**
+ * Manejar acciones de creación de estudiantes
+ */
+function handleStudentCreateActions() {
+	$("#create-student-modal").on("show.bs.modal", function (event) {
+		$("#create-student-form-sid").val("");
+		$("#create-student-form-firstname").val("");
+		$("#create-student-form-lastname").val("");
+		$("#create-student-form-cid").val("");
+		$("#create-student-form-guardian").val("");
+
+		$("#create-student-form-cid").empty();
+
+		Gb.globalState.classes.forEach(clase => {
+			$("#create-student-form-cid").append('<option value="' + clase.cid + '">' + clase.cid + '</option>');
+		})
+	});
+
+	$("#create-student-form").on("submit", function (event) {
+		event.preventDefault();
+
+		let studentSid = $("#create-student-form-sid").val();
+		let studentFirstName = $("#create-student-form-firstname").val();
+		let studentLastName = $("#create-student-form-lastname").val();
+		let studentCid = $("#create-student-form-cid").val();
+		let studentGuardian = $("#create-student-form-guardian").val().split(",");
+
+		/* TODO: Validar todo por el lado del cliente */
+		if (true) {
+			Gb.addStudent({sid: studentSid,
+						   first_name: studentFirstName,
+						   last_name: studentLastName,
+						   cid: studentCid,
+						   guardians: studentGuardian}).then(d => {
+				if (d !== undefined) {
+					$("#create-student-modal").modal("hide");
+
+					rebootUserList();
+
+					let alerta = '<div class="alert alert-success alert-dismissible fade show" role="alert">Estudiante creado correctamente.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+					$("#view-users-right-panel").prepend(alerta)
+					$('.alert').alert();
+				} else {
+					/* TODO: Validar el nombre por el lado del servidor, avisar si algo va mal */
+					console.log("Hubo un error al añadir el estudiante " + studentSid);
+				}
+			});
+		}
+	});
+}
+
+/**
+ * Manejar acciones de creación de usuarios genéricos
+ */
+function handleUserCreateActions() {
+	$("#create-generic-user-modal").on("show.bs.modal", function (event) {
+		$("#create-generic-user-form-uid").val("");
+		$("#create-generic-user-form-type").val("");
+		$("#create-generic-user-form-firstname").val("");
+		$("#create-generic-user-form-lastname").val("");
+		$("#create-generic-user-form-phones").val("");
+		$("#create-generic-user-form-cids").val("");
+		$("#create-generic-user-form-students").val("");
+		$("#create-generic-user-form-password").val("");
+
+		$("#create-generic-user-form-cids").empty();
+
+		Gb.globalState.classes.forEach(clase => {
+			$("#create-generic-user-form-cids").append('<option value="' + clase.cid + '">' + clase.cid + '</option>');
+		})
+	});
+
+	$("#create-generic-user-form").on("submit", function (event) {
+		event.preventDefault();
+
+		let userUid = $("#create-generic-user-form-uid").val();
+		let userType = $("#create-generic-user-form-type").val();
+		let userFirstName = $("#create-generic-user-form-firstname").val();
+		let userLastName = $("#create-generic-user-form-lastname").val();
+		let userPhones = $("#create-generic-user-form-phones").val().split(",");
+		let userCids = $("#create-generic-user-form-cids").val();
+		let userStudents = $("#create-generic-user-form-students").val().split(",");
+		let userPassword = $("#create-generic-user-form-password").val();
+
+		/* TODO: Validar todo por el lado del cliente */
+		if (true) {
+			Gb.addUser({uid: userUid, 
+						   type: userType, 
+						   first_name: userFirstName, 
+						   last_name: userLastName, 
+						   tels: userPhones, 
+						   classes: userCids, 
+						   students: userStudents, 
+						   password: userPassword}).then(d => {
+				if (d !== undefined) {
+					$("#create-generic-user-modal").modal("hide");
+
+					rebootUserList();
+
+					let alerta = '<div class="alert alert-success alert-dismissible fade show" role="alert">Usuario creado correctamente.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+					$("#view-users-right-panel").prepend(alerta)
+					$('.alert').alert();
+				} else {
+					/* TODO: Validar el nombre por el lado del servidor, avisar si algo va mal */
+					console.log("Hubo un error al añadir el usuario " + userUid);
+				}
+			});
+		}
+	});
+}
+
+/**
  *
  *
  *
@@ -397,13 +568,60 @@ $(() => {
 
 	/* Vista de clases */
 	handleClassListActions();
+	handleClassCreateActions()
 
 	/* Vista de usuarios */
 	handleUsersFilter();
 	handleUsersListClick();
+	handleStudentCreateActions();
+	handleUserCreateActions();
 });
+
+async function populate(classes, minStudents, maxStudents, minParents, maxParents, msgCount) {
+      const U = Gb.Util;
+
+      // genera datos de ejemplo
+      let classIds = classes || ["1A", "1B", "2A", "2B", "3A", "3B"];
+      let minStudentsInClass = minStudents || 10;
+      let maxStudentsInClass = maxStudents || 20;
+      let minParentsPerStudent = minParents || 1;
+      let maxParentsPerStudent = maxParents || 3;
+      let userIds = [];
+      let tasks = [];
+
+      classIds.forEach(cid => {
+        tasks.push(() => Gb.addClass(new Gb.EClass(cid)));
+        let teacher = U.randomUser(Gb.UserRoles.TEACHER, [cid]);
+        userIds.push(teacher.uid);
+        tasks.push(() => Gb.addUser(teacher));
+
+        let students = U.fill(U.randomInRange(minStudentsInClass, maxStudentsInClass), () => U.randomStudent(cid));
+        students.forEach(s => {
+          tasks.push(() => Gb.addStudent(s));
+          let parents = U.fill(U.randomInRange(minParentsPerStudent, maxParentsPerStudent),
+            () => U.randomUser(Gb.UserRoles.GUARDIAN, [], [s.sid]));
+          parents.forEach( p => {
+            userIds.push(p.uid);
+            tasks.push(() =>  Gb.addUser(p));
+          });
+        });
+      });
+      tasks.push(() => Gb.addUser(U.randomUser(Gb.UserRoles.ADMIN)));
+      U.fill(msgCount, () => U.randomMessage(userIds)).forEach(m => tasks.push(() => Gb.send(m)));
+
+      // los procesa en secuencia contra un servidor
+      for (let t of tasks) {
+        try {
+            console.log("Starting a task ...");
+            await t().then(console.log("task finished!"));
+        } catch (e) {
+            console.log("ABORTED DUE TO ", e);
+        }
+      }
+}
 
 /**
  * Exportamos Gb para usarlo en la consola
  */
 window.Gb = Gb;
+window.populate = populate;
