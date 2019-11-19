@@ -524,7 +524,7 @@ function handleUserCreateActions() {
         let userPassword = $("#create-generic-user-form-password").val();
 
         /* TODO: Validar todo por el lado del cliente */
-        if (true) {
+        if (validatePassword(userPassword)) {
             Gb.addUser({
                 uid: userUid,
                 type: userType,
@@ -548,8 +548,18 @@ function handleUserCreateActions() {
                     console.log("Hubo un error al añadir el usuario " + userUid);
                 }
             });
+        } else {
+            $("#create-generic-user-form-password").setCustomValidity("Contraseña incorrecta");
         }
     });
+}
+
+/**
+ * Validacion de la contraseña de usuarios
+ */
+function validatePassword(userPassword) {
+    let expreg = new RegExp("[A-Z]{1}[0-9]{1}");
+    return expreg.test(userPassword);
 }
 
 /**
