@@ -286,6 +286,13 @@ function handleClassListActions() {
 }
 
 /**
+ * Valida el identificador de una clase
+ */
+function validateClassCid(cid) {
+    return cid !== undefined;
+}
+
+/**
  * Manejar acciones de creación de clases
  */
 function handleClassCreateActions() {
@@ -299,7 +306,7 @@ function handleClassCreateActions() {
         let claseNombre = $("#create-class-form-name").val();
 
         /* Cuidado, el servidor admite nombres vacíos y no debería */
-        if (validateClass(claseNombre)) {
+        if (validateClassCid(claseNombre)) {
             Gb.addClass({ cid: claseNombre }).then(d => {
                 if (d !== undefined) {
                     $("#add-class-modal").modal("hide");
@@ -307,24 +314,17 @@ function handleClassCreateActions() {
                     rebootClassList();
 
                     let alerta = '<div class="alert alert-success alert-dismissible fade show" role="alert">Clase creada correctamente.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-                    $("#view-classes-right-panel").prepend(alerta)
-                    $('.alert').alert();
+                    $("#view-classes-right-panel").prepend(alerta);
+                    $(".alert").alert();
                 } else {
-                    /* TODO: Validar el nombre por el lado del servidor, avisar si algo va mal */
-                    console.log("Hubo un error al añadir la clase " + claseNombre);
+                    let alerta = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Hubo un error al crear la clase en el servidor.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+                    $("#create-class-form").prepend(alerta);
+                    $(".alert").alert();
                 }
             });
         }
     });
 }
-
-/**Funcion de validacion de clase */
-function validateClass(e) {
-    return e !== undefined;
-}
-
-
-
 
 /**
  * 
@@ -483,12 +483,18 @@ function handleStudentCreateActions() {
         }
     });
 }
+
 /**
- * Validaciones para la creacion de alumnos
+ * Valida una contraseña de usuario
+ * - Al menos 1 letra minúscula
+ * - Al menos 1 letra mayúscula
+ * - Al menos 1 dígito
+ * - Al menos 8 caracteres
  */
-
-
-
+function validatePassword(password) {
+	var regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+	return regex.gest(password);
+}
 
 /**
  * Manejar acciones de creación de usuarios genéricos
@@ -542,24 +548,17 @@ function handleUserCreateActions() {
 
                     let alerta = '<div class="alert alert-success alert-dismissible fade show" role="alert">Usuario creado correctamente.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
                     $("#view-users-right-panel").prepend(alerta)
-                    $('.alert').alert();
+                    $(".alert").alert();
                 } else {
-                    /* TODO: Validar el nombre por el lado del servidor, avisar si algo va mal */
-                    console.log("Hubo un error al añadir el usuario " + userUid);
+					let alerta = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Hubo un error al crear el usuario en el servidor.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+					$("#create-generic-user-form").prepend(alerta);
+					$(".alert").alert();
                 }
             });
         } else {
             $("#create-generic-user-form-password").setCustomValidity("Contraseña incorrecta");
         }
     });
-}
-
-/**
- * Validacion de la contraseña de usuarios
- */
-function validatePassword(userPassword) {
-    let expreg = new RegExp("[A-Z]{1}[0-9]{1}");
-    return expreg.test(userPassword);
 }
 
 /**
